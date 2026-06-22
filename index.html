@@ -6,7 +6,8 @@
 <title>ORSIVA — Orbital Risk & Liability Intelligence</title>
 <meta name="description" content="ORSIVA — real-time disposal risk, regulatory exposure and liability quantification for satellite operators. One clear verdict per satellite, continuously updated, audit-ready.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --black:   #08080a;
@@ -23,7 +24,7 @@
   --bdr:     rgba(255,255,255,0.07);
   --bdr2:    rgba(255,255,255,0.13);
   --display: 'Cormorant Garamond', Georgia, serif;
-  --body:    'Barlow', sans-serif;
+  --body:    'Space Grotesk', 'Barlow', sans-serif;
   --cond:    'Barlow Condensed', sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -569,80 +570,48 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
 </div><!-- /main-page -->
 
 <div id="demo-page" class="page">
-  <div id="demo-form-wrap">
+  <div id="demo-page-outer" style="min-height:100vh;background:var(--black);padding:130px 64px 90px;">
     <div class="demo-inner">
       <button class="demo-back" onclick="showPage('main')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to ORSIVA</button>
       <div class="demo-tag">Request a Demo</div>
       <h1 class="demo-title">See ORSIVA<br><em>in action.</em></h1>
-      <p class="demo-sub">Tell us about your operation. We'll prepare a tailored demonstration of ORSIVA applied to your satellite fleet and orbital context — decision, economics and the ORSIVA Score.</p>
+      <p class="demo-sub">Send us a short email — tell us about your fleet, orbital regime, and what you'd like to see. We'll prepare a tailored demonstration of ORSIVA applied to your satellites.</p>
       <div class="demo-rule"></div>
-      <form class="demo-form" id="demo-form" onsubmit="submitDemo(event)">
-        <div class="form-row">
-          <div class="form-field"><label class="form-label">First Name <span>*</span></label><input class="form-input" name="first_name" type="text" placeholder="Kavya" required></div>
-          <div class="form-field"><label class="form-label">Last Name <span>*</span></label><input class="form-input" name="last_name" type="text" placeholder="Parthasarathy" required></div>
+
+      <!-- Primary CTA: mailto -->
+      <a href="mailto:contact@orsiva.space?subject=ORSIVA Demo Request&body=Name:%0AOrganisation:%0ARole:%0AFleet size and orbital regime:%0A%0AWhat brings you to ORSIVA (current process, compliance challenges, what you'd like to see):" class="btn-gold" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;margin-bottom:48px;">
+        Email us to arrange a demo
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- Divider + try-now section -->
+      <div style="border-top:1px solid var(--bdr);padding-top:48px;">
+        <div class="demo-tag" style="margin-bottom:16px;">Or explore right now</div>
+        <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:14px;">The live console is <em>open.</em></h2>
+        <p style="font-size:16px;font-weight:300;color:var(--white2);line-height:1.75;max-width:520px;margin-bottom:32px;">No sign-in required. Load the demo fleet, run the ORSIVA Score, inspect the loss model and Δv budgets — everything is live. Upload your own satellite data when you're ready.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+          <a href="https://app.orsiva.space" target="_blank" rel="noopener" class="btn-gold" style="text-decoration:none;">Launch Console
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="ORSIVA_Methodology_Public.pdf" target="_blank" rel="noopener" class="btn-outline" style="text-decoration:none;">Technical Brief</a>
         </div>
-        <div class="form-row">
-          <div class="form-field"><label class="form-label">Work Email <span>*</span></label><input class="form-input" name="email" type="email" placeholder="you@organisation.com" required></div>
-          <div class="form-field"><label class="form-label">Organisation <span>*</span></label><input class="form-input" name="organisation" type="text" placeholder="Aerospace Corp" required></div>
+      </div>
+
+      <div style="margin-top:52px;padding:20px 24px;border:1px solid var(--bdr);border-left:2px solid var(--goldbdr);background:rgba(201,168,76,0.03);">
+        <div style="font-family:var(--cond);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Contact</div>
+        <div style="font-size:15px;font-weight:300;color:var(--white2);line-height:1.7;">
+          <a href="mailto:contact@orsiva.space" style="color:var(--gold2);text-decoration:none;">contact@orsiva.space</a> · We respond within one business day.
         </div>
-        <div class="form-row">
-          <div class="form-field"><label class="form-label">Your Role <span>*</span></label>
-            <select class="form-select" name="role" required>
-              <option value="" disabled selected>Select your role</option>
-              <option>Satellite Operator</option><option>Mission Manager</option><option>Systems Engineer</option>
-              <option>Compliance / Legal</option><option>Regulator</option><option>Insurer / Underwriter</option>
-              <option>Investor</option><option>Researcher / Academic</option><option>Other</option>
-            </select>
-          </div>
-          <div class="form-field"><label class="form-label">Fleet Size</label>
-            <select class="form-select" name="fleet_size">
-              <option value="" disabled selected>Number of satellites</option>
-              <option>1–10</option><option>10–50</option><option>50–150</option><option>150–300</option><option>300+</option><option>Not applicable</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-field full"><label class="form-label">Orbital Regime</label>
-          <select class="form-select" name="orbital_regime">
-            <option value="" disabled selected>Where are your satellites?</option>
-            <option>LEO (200–2,000 km)</option><option>MEO (2,000–35,786 km)</option><option>GEO (≈35,786 km)</option><option>Multiple regimes</option><option>Planning stage — not yet launched</option>
-          </select>
-        </div>
-        <div class="form-field full"><label class="form-label">What brings you to ORSIVA?</label>
-          <textarea class="form-textarea" name="message" placeholder="Tell us about your current end-of-life decision process, compliance challenges, or what you'd like to see in the demonstration…"></textarea>
-        </div>
-        <div class="form-divider"></div>
-        <div class="form-note">ORSIVA is a decision-intelligence layer — all outputs are recommendations only. Final operational authority remains with the satellite operator. Your information will be used solely to prepare your demonstration.</div>
-        <div class="form-submit">
-          <span class="form-submit-note">We respond within one business day.</span>
-          <button type="submit" class="btn-gold">Submit Request <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="demo-success" id="demo-success">
-    <div class="demo-inner" style="text-align:center;padding-top:40px;">
-      <button class="demo-back" onclick="showPage('main')" style="margin:0 auto 64px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to ORSIVA</button>
-      <div class="success-mark">✓</div>
-      <h2 class="success-title">Request <em>received.</em></h2>
-      <p class="success-sub">Thank you. We'll review your details and reach out within one business day to arrange your ORSIVA demonstration.</p>
-      <button class="btn-gold" onclick="showPage('main')">Return to ORSIVA <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
     </div>
   </div>
 </div><!-- /demo-page -->
 
 <script>
-function demoRequested() {
-  try { return localStorage.getItem('orsiva_demo_requested') === '1'; } catch (_) { return false; }
-}
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id + '-page').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'instant' });
-  if (id === 'demo') {
-    var done = demoRequested();
-    document.getElementById('demo-form-wrap').style.display = done ? 'none' : 'block';
-    document.getElementById('demo-success').style.display = done ? 'block' : 'none';
-  }
 }
 function goTo(id) {
   showPage('main');
@@ -658,27 +627,6 @@ document.querySelectorAll('.scroll-reveal').forEach(el => ro.observe(el));
 function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
 function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
 
-/* ── Demo form delivery ───────────────────────────────────────────────
-   To receive demo requests by email, create a free form endpoint (e.g.
-   Formspree: https://formspree.io → New Form → use the email you want
-   them sent to), then paste the endpoint URL below in place of YOUR_FORM_ID.
-   Until you do, the form still works and shows the confirmation — it just
-   doesn't send anywhere yet.                                            */
-const DEMO_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-
-function submitDemo(e) {
-  e.preventDefault();
-  var form = document.getElementById('demo-form');
-  try { localStorage.setItem('orsiva_demo_requested', '1'); } catch (_) {}
-  if (DEMO_ENDPOINT.indexOf('YOUR_FORM_ID') === -1) {
-    try {
-      fetch(DEMO_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
-    } catch (_) {}
-  }
-  document.getElementById('demo-form-wrap').style.display = 'none';
-  document.getElementById('demo-success').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
 </script>
 </body>
 </html>
