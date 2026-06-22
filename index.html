@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORSIVA — End-of-Life Decision Intelligence</title>
-<meta name="description" content="ORSIVA — Orbital Risk, Sustainability, Intelligence & Valuation Analytics. End-of-life decision intelligence for satellite operators, grounded in decision science.">
+<title>ORSIVA — Orbital Risk & Liability Intelligence</title>
+<meta name="description" content="ORSIVA — real-time disposal risk, regulatory exposure and liability quantification for satellite operators. One clear verdict per satellite, continuously updated, audit-ready.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -344,6 +344,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
+    <a href="https://app.orsiva.space" target="_blank" rel="noopener" style="font-family:var(--cond);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--white2);text-decoration:none;white-space:nowrap">Launch Console &#8599;</a>
     <button class="nav-cta-btn" onclick="showPage('demo')">Request a Demo</button>
     <button class="nav-burger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
@@ -357,6 +358,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
   <a href="#" onclick="goTo('problem');closeMenu();return false;">The Challenge</a>
   <a href="#" onclick="goTo('join');closeMenu();return false;">Work With Us</a>
   <a href="#" onclick="goTo('contact');closeMenu();return false;">Contact</a>
+  <a href="https://app.orsiva.space" target="_blank" rel="noopener">Launch Console &#8599;</a>
   <button class="btn-gold" style="margin-top:18px;" onclick="showPage('demo');closeMenu();">Request a Demo</button>
 </div>
 
@@ -366,6 +368,11 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
     <div class="hero-overline">Orbital Risk · Sustainability · Intelligence · Valuation Analytics</div>
     <h1 class="hero-title">When should a<br>satellite <em>leave</em> orbit?</h1>
     <div class="hero-title-sub">ORSIVA answers that question.</div>
+    <p class="hero-desc">Continuous risk and liability intelligence — per satellite, per fleet. The ORSIVA Score tells you when to act, what it costs to wait, and how to defend the decision.</p>
+    <div class="hero-actions">
+      <a href="https://app.orsiva.space" target="_blank" rel="noopener" class="btn-gold" style="text-decoration:none;">Launch Console <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <button class="btn-outline" onclick="showPage('demo')">Request a Demo</button>
+    </div>
   </div>
   <div class="hero-rule"></div>
 </section>
@@ -377,10 +384,16 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
   <div class="stat-item scroll-reveal d3"><div class="stat-num">1</div><div class="stat-label">ORSIVA Score —<br>one clear verdict</div></div>
 </div>
 
+<div style="border-bottom:1px solid var(--bdr);padding:16px 64px;display:flex;align-items:center;gap:18px;background:rgba(201,168,76,0.025);flex-wrap:wrap;">
+  <span style="font-family:var(--cond);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);white-space:nowrap;">Validated</span>
+  <span style="font-size:14px;color:var(--white3);font-weight:300;line-height:1.5;">Iridium-33 / Cosmos-2251 collision (Feb 2009) — ORSIVA flags Cosmos-2251 <strong style="color:var(--white2);font-weight:400;">INITIATE</strong> from day one (defunct, no fuel), Iridium-33 <strong style="color:var(--white2);font-weight:400;">INITIATE</strong> ~40 months before impact.</span>
+  <a href="https://app.orsiva.space/backtest" target="_blank" rel="noopener" style="margin-left:auto;font-family:var(--cond);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold2);white-space:nowrap;text-decoration:none;">View backtest &#8599;</a>
+</div>
+
 <section class="section" id="problem">
   <div class="container">
     <div class="problem-intro scroll-reveal">
-      <p class="lead">An <strong>end-of-life decision engine</strong> for satellite operators. ORSIVA turns orbital risk and regulation into the optimal disposal decision — then shows you <strong>the economics</strong> of the timing and <strong>the human bias</strong> pulling against it.</p>
+      <p class="lead">Continuous <strong>risk and liability intelligence</strong> for satellite operators. ORSIVA turns orbital risk and regulation into the optimal disposal decision — then shows you <strong>the economics</strong> of the timing and <strong>the cost</strong> of delaying it.</p>
     </div>
     <div class="problem-layout">
       <div>
@@ -399,8 +412,9 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
       </div>
     </div>
     <div class="problem-cta scroll-reveal">
-      <button class="btn-gold" onclick="showPage('demo')">Request a Demo <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-      <a href="mailto:contact@orsiva.space?subject=ORSIVA Technical Brief" class="btn-outline">Technical Brief</a>
+      <a href="https://app.orsiva.space" target="_blank" rel="noopener" class="btn-gold" style="text-decoration:none">Launch the live console <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <button class="btn-outline" onclick="showPage('demo')">Request a Demo</button>
+      <a href="ORSIVA_Methodology_Public.pdf" target="_blank" rel="noopener" class="btn-outline">Technical Brief</a>
     </div>
   </div>
 </section>
@@ -428,9 +442,9 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
           <div class="vr-key">Economics</div>
           <div class="vr-val"><strong>Act within ~1 month</strong><span>Value-at-risk $1.6M · delaying costs more than acting</span></div>
         </div>
-        <div class="verdict-row">
-          <div class="vr-key">The human</div>
-          <div class="vr-val"><strong>Delay bias detected</strong><span>“The data says act now” — framed to overcome hesitation</span></div>
+        <div class=”verdict-row”>
+          <div class=”vr-key”>Cost of delay</div>
+          <div class=”vr-val”><strong>~$90k / month deferred</strong><span>Every month of inaction increases expected liability — acting now costs less than waiting</span></div>
         </div>
       </div>
     </div>
@@ -481,7 +495,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
       <div class="roadmap-list scroll-reveal">
         <div class="rm-step"><div class="rm-num active">I</div><div><div class="rm-title active">Working Engine</div><div class="rm-when"><span class="live-dot"></span>Live now</div><div class="rm-desc">The full decision engine is operational — risk, economics, behaviour and the ORSIVA Score — plus an AI regulatory-intelligence engine and audit-ready outputs for regulators, insurers and operators.</div></div></div>
         <div class="rm-step"><div class="rm-num">II</div><div><div class="rm-title">Live Data &amp; First Pilots</div><div class="rm-when future">Q3 2026</div><div class="rm-desc">Live ingestion from CelesTrak and Space-Track, and the first design-partner pilots — ORSIVA run on real fleets in shadow mode, alongside existing processes, delivering a clear verdict per asset.</div></div></div>
-        <div class="rm-step"><div class="rm-num">III</div><div><div class="rm-title">Dashboard &amp; Integration</div><div class="rm-when future">2027</div><div class="rm-desc">An operator dashboard surfacing the decision, economics and behaviour per asset, plus API-first integration with operator telemetry and the enterprise org/tenant model.</div></div></div>
+        <div class="rm-step"><div class="rm-num active">III</div><div><div class="rm-title active">Fleet Dashboard &amp; Operator Data</div><div class="rm-when"><span class="live-dot"></span>Live now</div><div class="rm-desc">Fleet risk matrix, orbital console, and operator telemetry upload are live. Operators supply real mass, cross-section, and fuel to sharpen Δv budgets and decay estimates — removing estimated badges. Backtest mode validates the model against historical collisions.</div></div></div>
         <div class="rm-step"><div class="rm-num">IV</div><div><div class="rm-title">Standardisation</div><div class="rm-when future">Ongoing</div><div class="rm-desc">Working with agencies and insurers toward standardised end-of-life reporting and a cross-operator coordination layer.</div></div></div>
       </div>
     </div>
@@ -535,7 +549,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
     </div>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="scroll-reveal">
       <button class="btn-gold" onclick="showPage('demo')">Request a Demo <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-      <a href="mailto:contact@orsiva.space?subject=ORSIVA Technical Brief" class="btn-outline">Download Technical Brief</a>
+      <a href="ORSIVA_Methodology_Public.pdf" target="_blank" rel="noopener" class="btn-outline">Download Technical Brief</a>
     </div>
   </div>
 </section>
