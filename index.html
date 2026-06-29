@@ -41,6 +41,7 @@ nav.scrolled { background: rgba(8,8,10,0.93); backdrop-filter: blur(20px); borde
 .nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
 .nav-logo-word { font-family: var(--cond); font-size: 24px; font-weight: 600; letter-spacing: 0.2em; color: var(--white); position: relative; z-index: 1; }
 .nav-logo-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.logo-i { text-transform: lowercase; color: #f5d23b; }
 /* satellite orbiting the ORSIVA wordmark */
 .logo-orbit { position: relative; display: inline-flex; align-items: center; }
 .logo-orbit::after { content: ''; position: absolute; top: 50%; left: 50%; width: 132px; height: 38px; margin: -19px 0 0 -66px; border: 1px solid rgba(201,168,76,0.14); border-radius: 50%; pointer-events: none; z-index: 0; }
@@ -90,7 +91,7 @@ nav.scrolled { background: rgba(8,8,10,0.93); backdrop-filter: blur(20px); borde
 .stat-item { flex: 1; padding: 40px 44px; border-right: 1px solid var(--bdr); transition: background 0.3s; }
 .stat-item:last-child { border-right: none; }
 .stat-item:hover { background: rgba(201,168,76,0.03); }
-.stat-num { font-family: var(--display); font-size: 48px; font-weight: 300; color: var(--gold2); line-height: 1; margin-bottom: 8px; }
+.stat-num { font-family: var(--display); font-size: 48px; font-weight: 500; font-variant-numeric: tabular-nums lining-nums; letter-spacing: 0.01em; color: var(--gold2); line-height: 1; margin-bottom: 8px; }
 .stat-label { font-family: var(--cond); font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white3); line-height: 1.6; }
 .section { padding: 120px 64px; }
 .section-tag { font-family: var(--cond); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
@@ -238,7 +239,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
 .verdict { display:grid; grid-template-columns:280px 1fr; gap:2px; border:1px solid var(--bdr); background:var(--bdr); }
 .verdict-score { background:rgba(201,168,76,0.05); padding:48px 36px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; }
 .verdict-score::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold2)); }
-.vs-num { font-family:var(--display); font-size:84px; font-weight:300; color:var(--gold2); line-height:1; }
+.vs-num { font-family:var(--display); font-size:84px; font-weight:500; font-variant-numeric: tabular-nums lining-nums; letter-spacing:0.01em; color:var(--gold2); line-height:1; }
 .vs-of { font-family:var(--display); font-size:20px; color:var(--white3); margin-top:-2px; }
 .vs-label { font-family:var(--cond); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-top:16px; }
 .vs-asset { font-family:var(--cond); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--white3); margin-top:8px; }
@@ -312,7 +313,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
 <nav id="nav">
   <div class="nav-logo" onclick="showPage('main')">
     <span class="logo-orbit">
-      <span class="nav-logo-word">ORSIVA</span>
+      <span class="nav-logo-word">ORS<span class="logo-i">i</span>VA</span>
       <span class="sat"></span>
     </span>
   </div>
@@ -556,7 +557,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
 </section>
 
 <footer>
-  <div class="footer-logo">ORSIVA</div>
+  <div class="footer-logo">ORS<span class="logo-i">i</span>VA</div>
   <div class="footer-links">
     <a href="#" onclick="goTo('problem');return false;">Problem</a>
     <a href="#" onclick="goTo('how');return false;">How It Works</a>
