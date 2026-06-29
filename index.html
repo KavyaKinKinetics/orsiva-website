@@ -76,11 +76,11 @@ nav.scrolled { background: rgba(8,8,10,0.93); backdrop-filter: blur(20px); borde
 .section-tag { font-family: var(--cond); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
 .section-tag::after { content: ''; display: block; width: 32px; height: 1px; background: var(--goldbdr); }
 .section-h { font-family: var(--display); font-size: clamp(36px, 4.5vw, 60px); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; color: var(--white); margin-bottom: 22px; }
-.section-h em { font-style: italic; color: var(--gold2); }
+.section-h em { font-style: italic; color: var(--white2); }
 .section-p { font-size: 17px; font-weight: 400; line-height: 1.85; color: var(--white2); max-width: 540px; }
 .problem-intro { max-width: 820px; margin: 0 auto 64px; text-align: center; }
 .problem-intro .lead { font-family: var(--display); font-size: 28px; font-weight: 400; line-height: 1.5; color: var(--white); }
-.problem-intro .lead strong { font-weight: 500; color: var(--gold2); }
+.problem-intro .lead strong { font-weight: 500; color: var(--white); }
 .problem-cta { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 64px; }
 .work-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); margin-top: 56px; }
 .work-card { background: var(--black); padding: 42px 38px; transition: background 0.3s; }
@@ -191,7 +191,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
 .demo-back svg { transition: transform 0.2s; }
 .demo-tag { font-family: var(--cond); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .demo-title { font-family: var(--display); font-size: clamp(40px, 5.5vw, 68px); font-weight: 300; line-height: 1.05; color: var(--white); margin-bottom: 14px; }
-.demo-title em { font-style: italic; color: var(--gold2); }
+.demo-title em { font-style: italic; color: var(--white2); }
 .demo-sub { font-size: 17px; font-weight: 300; color: var(--white2); margin-bottom: 56px; line-height: 1.8; }
 .demo-rule { width: 64px; height: 1px; background: var(--goldbdr); margin-bottom: 56px; }
 .demo-form { display: flex; flex-direction: column; gap: 30px; }
@@ -234,7 +234,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
 .manifesto .section-tag { justify-content: center; }
 .manifesto .section-tag::after { display: none; }
 .manifesto-h { font-family: var(--display); font-size: clamp(40px,6.2vw,80px); font-weight: 300; line-height: 1.04; letter-spacing: -0.01em; color: var(--white); margin: 14px 0 26px; }
-.manifesto-h em { font-style: italic; color: var(--gold2); }
+.manifesto-h em { font-style: italic; color: var(--white2); }
 .manifesto-p { font-size: 21px; font-weight: 400; line-height: 1.65; color: var(--white2); max-width: 620px; margin: 0 auto; }
 .cap-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); }
 .cap { background: var(--black); padding: 48px 38px; text-align: center; transition: background .3s; }
@@ -324,7 +324,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
-    <a href="https://app.orsiva.space" target="_blank" rel="noopener" style="font-family:var(--cond);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--white2);text-decoration:none;white-space:nowrap">Launch Console &#8599;</a>
+    <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A" style="font-family:var(--cond);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--white2);text-decoration:none;white-space:nowrap">Request Access &#8599;</a>
     <button class="nav-cta-btn" onclick="showPage('demo')">Request a Demo</button>
     <button class="nav-burger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
@@ -338,7 +338,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
   <a href="#" onclick="goTo('problem');closeMenu();return false;">The Challenge</a>
   <a href="#" onclick="goTo('join');closeMenu();return false;">Work With Us</a>
   <a href="#" onclick="goTo('contact');closeMenu();return false;">Contact</a>
-  <a href="https://app.orsiva.space" target="_blank" rel="noopener">Launch Console &#8599;</a>
+  <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A">Request Access &#8599;</a>
   <button class="btn-gold" style="margin-top:18px;" onclick="showPage('demo');closeMenu();">Request a Demo</button>
 </div>
 
@@ -350,7 +350,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
     <div class="hero-title-sub">ORSIVA answers that question.</div>
     <p class="hero-desc">Continuous risk and liability intelligence — per satellite, per fleet. The ORSIVA Score tells you when to act, what it costs to wait, and how to defend the decision.</p>
     <div class="hero-actions">
-      <a href="https://app.orsiva.space" target="_blank" rel="noopener" class="btn-gold" style="text-decoration:none;">Launch Console <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A" class="btn-gold" style="text-decoration:none;">Request Access <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <button class="btn-outline" onclick="showPage('demo')">Request a Demo</button>
     </div>
   </div>
@@ -392,7 +392,7 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
       </div>
     </div>
     <div class="problem-cta scroll-reveal">
-      <a href="https://app.orsiva.space" target="_blank" rel="noopener" class="btn-gold" style="text-decoration:none">Launch the live console <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A" class="btn-gold" style="text-decoration:none">Request console access <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <button class="btn-outline" onclick="showPage('demo')">Request a Demo</button>
       <a href="ORSIVA_Methodology_Public.pdf" target="_blank" rel="noopener" class="btn-outline">Technical Brief</a>
     </div>
@@ -422,9 +422,9 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
           <div class="vr-key">Economics</div>
           <div class="vr-val"><strong>Act within ~1 month</strong><span>Value-at-risk $1.6M · delaying costs more than acting</span></div>
         </div>
-        <div class=”verdict-row”>
-          <div class=”vr-key”>Cost of delay</div>
-          <div class=”vr-val”><strong>~$90k / month deferred</strong><span>Every month of inaction increases expected liability — acting now costs less than waiting</span></div>
+        <div class="verdict-row">
+          <div class="vr-key">Cost of delay</div>
+          <div class="vr-val"><strong>~$90k / month deferred</strong><span>Every month of inaction increases expected liability — acting now costs less than waiting</span></div>
         </div>
       </div>
     </div>
@@ -563,13 +563,13 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
 
-      <!-- Divider + try-now section -->
+      <!-- Divider + access-by-request section -->
       <div style="border-top:1px solid var(--bdr);padding-top:48px;">
-        <div class="demo-tag" style="margin-bottom:16px;">Or explore right now</div>
-        <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:14px;">The live console is <em>open.</em></h2>
-        <p style="font-size:16px;font-weight:300;color:var(--white2);line-height:1.75;max-width:520px;margin-bottom:32px;">No sign-in required. Load the demo fleet, run the ORSIVA Score, inspect the loss model and Δv budgets — everything is live. Upload your own satellite data when you're ready.</p>
+        <div class="demo-tag" style="margin-bottom:16px;">Private access</div>
+        <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:14px;">The live console is <em>by request.</em></h2>
+        <p style="font-size:16px;font-weight:300;color:var(--white2);line-height:1.75;max-width:520px;margin-bottom:32px;">The console is access-controlled while we work with a small group of partners. Email us and we&rsquo;ll send you a password so you can load the demo fleet, run the ORSIVA Score, and inspect the loss model and &Delta;v budgets.</p>
         <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-          <a href="https://app.orsiva.space" target="_blank" rel="noopener" class="btn-gold" style="text-decoration:none;">Launch Console
+          <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A" class="btn-gold" style="text-decoration:none;">Request access
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a href="ORSIVA_Methodology_Public.pdf" target="_blank" rel="noopener" class="btn-outline" style="text-decoration:none;">Technical Brief</a>
