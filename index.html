@@ -553,26 +553,16 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
       <button class="demo-back" onclick="showPage('main')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to ORSIVA</button>
       <div class="demo-tag">Request a Demo</div>
       <h1 class="demo-title">See ORSIVA<br><em>in action.</em></h1>
-      <p class="demo-sub">Send us a short email — tell us about your fleet, orbital regime, and what you'd like to see. We'll prepare a tailored demonstration of ORSIVA applied to your satellites.</p>
+      <p class="demo-sub">Send us a short email — tell us about your fleet, orbital regime, and what you&rsquo;d like to see. We&rsquo;ll prepare a tailored demonstration of ORSIVA applied to your satellites, and send you a password for the live console so you can explore it yourself — load the demo fleet, run the ORSIVA Score, and inspect the loss model and &Delta;v budgets.</p>
       <div class="demo-rule"></div>
 
-      <!-- Primary CTA: mailto -->
-      <a href="mailto:contact@orsiva.space?subject=ORSIVA Demo Request&body=Name:%0AOrganisation:%0ARole:%0AFleet size and orbital regime:%0A%0AWhat brings you to ORSIVA (current process, compliance challenges, what you'd like to see):" class="btn-gold" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;margin-bottom:48px;">
-        Email us to arrange a demo
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-
-      <!-- Divider + access-by-request section -->
-      <div style="border-top:1px solid var(--bdr);padding-top:48px;">
-        <div class="demo-tag" style="margin-bottom:16px;">Private access</div>
-        <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:14px;">The live console is <em>by request.</em></h2>
-        <p style="font-size:16px;font-weight:300;color:var(--white2);line-height:1.75;max-width:520px;margin-bottom:32px;">The console is access-controlled while we work with a small group of partners. Email us and we&rsquo;ll send you a password so you can load the demo fleet, run the ORSIVA Score, and inspect the loss model and &Delta;v budgets.</p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-          <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A" class="btn-gold" style="text-decoration:none;">Request access
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="ORSIVA_Methodology_Public.pdf" target="_blank" rel="noopener" class="btn-outline" style="text-decoration:none;">Technical Brief</a>
-        </div>
+      <!-- Single CTA: request a demo (covers the guided demo + console access) -->
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+        <a href="mailto:contact@orsiva.space?subject=ORSIVA Demo Request&body=Name:%0AOrganisation:%0ARole:%0AFleet size and orbital regime:%0A%0AWhat brings you to ORSIVA (current process, compliance challenges, what you'd like to see):" class="btn-gold" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;">
+          Request a demo
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="ORSIVA_Methodology_Public.pdf" target="_blank" rel="noopener" class="btn-outline" style="text-decoration:none;">Technical Brief</a>
       </div>
 
       <div style="margin-top:52px;padding:20px 24px;border:1px solid var(--bdr);border-left:2px solid var(--goldbdr);background:rgba(201,168,76,0.03);">
