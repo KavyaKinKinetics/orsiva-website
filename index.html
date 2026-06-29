@@ -42,29 +42,8 @@ nav.scrolled { background: rgba(8,8,10,0.93); backdrop-filter: blur(20px); borde
 .nav-logo-word { font-family: var(--cond); font-size: 24px; font-weight: 600; letter-spacing: 0.2em; color: var(--white); position: relative; z-index: 1; }
 .nav-logo-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
 .logo-i { text-transform: lowercase; color: #f5d23b; }
-/* satellite orbiting the ORSIVA wordmark */
+/* clean wordmark — orbit ring and satellite removed */
 .logo-orbit { position: relative; display: inline-flex; align-items: center; }
-.logo-orbit::after { content: ''; position: absolute; top: 50%; left: 50%; width: 132px; height: 38px; margin: -19px 0 0 -66px; border: 1px solid rgba(201,168,76,0.14); border-radius: 50%; pointer-events: none; z-index: 0; }
-.sat { position: absolute; top: 50%; left: 50%; width: 5px; height: 4px; margin: -2px 0 0 -2.5px; border-radius: 1px; background: var(--gold3); box-shadow: 0 0 7px 1px rgba(232,201,122,0.75); z-index: 2; animation: sat-orbit 7s linear infinite; }
-.sat::before, .sat::after { content: ''; position: absolute; top: 50%; width: 3px; height: 2px; margin-top: -1px; background: rgba(232,201,122,0.6); }
-.sat::before { left: -4px; }
-.sat::after { right: -4px; }
-@keyframes sat-orbit {
-  0%     { transform: translate(60px, 0); }
-  8.33%  { transform: translate(52px, 8.7px); }
-  16.66% { transform: translate(30px, 15px); }
-  25%    { transform: translate(0, 17px); }
-  33.33% { transform: translate(-30px, 15px); }
-  41.66% { transform: translate(-52px, 8.7px); }
-  50%    { transform: translate(-60px, 0); }
-  58.33% { transform: translate(-52px, -8.7px); }
-  66.66% { transform: translate(-30px, -15px); }
-  75%    { transform: translate(0, -17px); }
-  83.33% { transform: translate(30px, -15px); }
-  91.66% { transform: translate(52px, -8.7px); }
-  100%   { transform: translate(60px, 0); }
-}
-@media (prefers-reduced-motion: reduce) { .sat { animation: none; } }
 .nav-center { display: flex; gap: 44px; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); }
 .nav-center a { font-family: var(--cond); font-size: 13px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white3); text-decoration: none; transition: color 0.2s; }
 .nav-center a:hover { color: var(--gold2); }
@@ -314,7 +293,6 @@ footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; ju
   <div class="nav-logo" onclick="showPage('main')">
     <span class="logo-orbit">
       <span class="nav-logo-word">ORS<span class="logo-i">i</span>VA</span>
-      <span class="sat"></span>
     </span>
   </div>
   <div class="nav-center">
