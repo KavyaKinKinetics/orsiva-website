@@ -1,296 +1,751 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NAVIS — Orbital Risk Console (3D)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORSIVA — Orbital Risk & Liability Intelligence</title>
+<meta name="description" content="ORSIVA — real-time disposal risk, regulatory exposure and liability quantification for satellite operators. One clear verdict per satellite, continuously updated, audit-ready.">
+<link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAADpElEQVR42u2ZUWgcVRSGz7l3ZjO7ycy0TaJhN4kpNoGUDWWz1qQBjaIplZYkEK0+WBIFFcEGKuqT6JPgk+iDFINCoVUQyUtxQUEhAUOFItgu9KGNyEaStlBb100yO5m59/Rh7LBVqGWTcbdy/6eZvbsz853zn3vn3AVQUlJSUlJSUlJSuoMYY4yxen04BM4R8f8QZuDs7ySMMUQcHBwcGRkJTrf+vpuJPQD0tBvPPLqjxdakBCGJCBhCgMEY03UdAKanpzs6OgCgvjLFGQLAzOtd9N3e/KfpE2/tfO7xHalmPRgNn5RzPjc3Z1kWIkYBUOUVEYEIzAT/4cPeZosjYqPBEOHqde+nS+vvnrx66be1x4aHnz9yJGCYmpqKKI5atf5BQfRkv/XA/bFrRV/j9EdJEoCZ0Pb3J459tEoEp06dTKbaAaBUKtm2PTk5uVoqMY5SSEm1Bggyd982DYFabC4kOK70fNxwHadp97MvHbh+7Uoy1e77PiKapjk+Pp7JZObn56VPt6yFRCRljSz01y8RejvjT2TM/Vl7z4MJq1FrapAffE2/m4deffmFjs4uRCQiRFxaKnR398R18fRwy48X/rxQKFdOBluYkOrVnTJeOdT65du7OlsZAJw/f46IhBBCCCnl4uLF7EMDLz7VRt/vXfpizzfv97x5uC2zK1GzIq6MHzKUgiqDODQ0tLCw4HlesA4g4szMJ41Wa7/+leX+TDyRaIAGHUvr4pfL7nufX/72bJExFFUlQtskgCQAQSEJAkpJy8vLKysryWQy+M7Ghvva0WONrJw/kSFmCCFWHSitAwDs623a2dZAAFVPsNpWWegWCSFioVDIZrNjY2Ojo6PpdPr48Y+F73b3WO6G32rriLDuStcjBPj1inv6zA0AqHpiimRpDGo3OI7H447jBJ+02NojafPAw/a+3U2pZn27qZ0+c2P8ncV6qePbMqtphmHEYjHGWCwW45xXjm43+cEB+7M3ug4O2OGiXkcZuMP6zRBpE4b5LwACt0xMTPT19XmeBwC6rufz+dnZ2dBaAQkAEFHdmSdwSy6XowrlcrlwqC7ehf5VxWLR933f94N6KBaL9fUydzd50DQtLOgoYr/ZhqZeOkEFoAAUgAJQAApAASgABaAAFIACUAA1UlQ9cbgfER7fe009IgZ9PSJG19RHBeA4ztraWrit4jhORDeKamvRtm3DMMLTcrkc3dbQva2oMvDPv4Sjq2MlJSWlGuom4V9cNfQJvBMAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAL2klEQVR42u3ca3CUVxkH8Oc5593dXHZz20ASu9QCvdFyGQqWWMvdJganVtto1Q/OOMVOleo4tHasH2wHZzqKZTraTw5l6nTUTp1pqehw0TiCYKkhhBqhNgk1jZQESBOym2yyl/ecxw8HYrg0F63Ksv/fpwzzZobs/vd5znnO+y4RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFyMmbXWSim8FAAX03gJLqWUEpHZs2dv2rQpm8329PQYY/Cy5ND7R0qxYuL/xidGa2Z+6KGHROTkyZMzZsxwXQYvew5WP/0Bv3FunbFr1y7f95977jkXF7zOObFOJK24bknpF9dE59SELkiJ4v98+eiSMWfOnP7+fhFpbGzM23B4OVYkFBsr964o3/bIdb6R/oR/qD154OjwnpZ416m0seLS4wqJCIn8O+Gw1q5evbqiouLUqVNNTU1EZK1FOK507u3//KqKjC+JpCkMqXW3l9V/pPTRz1Ufe2d0z6H4n44NHzk+MpYJT7O1IkJTD4lbezY0NIjI7t27BwcHmVn+jZQhHP/jhiJC11WHFs0tSmes57G1NJj0mTjkce288KpFkTODfse7qX1tid3NibdOpFIZO7aAZWKXrUvnGUopt2wREWNMdXX12rVrmXnPnj2up/i+j3Bc4TsUNkbuuq2kPKKHR41iJibNTERGaCRth0elIMAfuam4dl7xNz5T/cbxkf1Hh3/fGn/j+EjGFyJx8booGS4Q49tKQ0NDWVlZb2/vvn378ran5Fg4rBWtaMXCiFYs9oIZDRMxk9JsLCVHrRAppmU3F99xa3jDp2Z09aZ/ezixqzne0pG8NBnMXF9ff/311ycSiYMHD3Z2dtbX1xPR66+/fvr0ac/z8rNs5FI4FJMVis0I3X5zcXLUKMXv13rGtrXDo0aItOIbYwWL5hZ99VMz1z/9zs7mQaXI2nPJiMVi27Ztq6urc7/S19d35MiR6urqdDr9wgsvWGuttWMdJ+9mBDmz4FBEROuWld2/snw0LVPZsjKzYiYi39DQiC0tUiffy/7hL0PMrtZQQUHB9u3b16xZY4xxnSUcDs+dO7eqqiqVSlVVVdXU1PT19fX39+dn5cidUyUhEVp3e6mZ/gKAmTzNRujAsaFznwmtRWTVqlUrVqzwfV8pFQgEtNbWWmOMiITD4fr6+s2bN7e1tW3ZsiUUCjFzvg1JcyMc53tKcNHcoqwv032PrFAoyF2nskfeTjMzCbs1ptuv0rjRuFJKnx+4unISCoU2btz4+OOPu9UJwnEF9hQmouXzwx+KBkYzdtrhsFIcUk3Np/rOpkVEae16yt133+3O5S/fcbV2BcZau2HDhpKSkrH1B8JxxamJBssjmpl8I3Y6q0NPcyLpV976hfsa76+MRn3ft9bW1tbOnj17SgsXpcrKymKxGOXZ8Vtu7FasFSJ65cDZOxeEl9xQFC3xUhnJZK1vSEiUmvgdY5Js2qt64JEfP0DU1dXV0tKydevW++67z/WOqZybJJPJ06dPj9+zaMXMZEWu4iFI7n0O3IyrfmnZrdcVlBRppXh41BgrTDx+HztuwcHhoN/UHi1c+O21a5YXFRW7udaZM2eqq6snXUm49OzYseOee+657Bz9PzzKwVb2AwoyExOd7M82v5V8ae/Arw8OnujL+EZqooHysBfwmIiyvhAxjbvPw4oUFgSeeuFv3/3Bthdf/Hl7e4fv+4FAYObMmZ7nTdomREQptWXLltbWVs/z3EpWK773zvLaW8JZX84M+mOx8DSjcvxf46yYzp/AOTfGQisWRD6+pHTB7MJYZdC3ksqIb0REmDgQ4NNns+u+09nbnxn7lWefffbhhx+etKe4upJIJJYuXdrZ2amUcsP0r6yb8aMN1xojvQPZN/+R+t3h+N43ho73pNJZOb/rISa2NrdLiZdz/+OxWLgbO3wjHe+mO95NP7frvbkfCt1xa7huSemym4srIl7A46ERW1qkf9cS7+3PKEVEyu1Bli9fPrW1jtVa7927t7OzU2vNREJKa2lcUZ5M2UTShAv18vnhlQvDyZR94/jIH/86/NuW+LHu0awvROJSkrsdJ7fvYbFCzKSYWDEzDSRM299Htx84u/3A2bd708mULYvo3v7sd3/ac2ogy0SslO/7y5Yte/TRR91J7KRthZlbW1u7urp6enqsiIgsuK7ga/dUuf21FcpkJZUVIppTE1q5MHLv8vK7a8tqogFm6hnIGnMuFloxE+VWQq6qHqmYmC84l49VBpMpe3bYHxtdGGOeeOKJJ5980vd9z/Mm7SlDQ0ORSCSZTLa1te3eveulX77SMH/oe1+Kvpewnr54SyVEnuaA5qICFU+a9nfTB/46tKcl/mb36OBw7t2ifHXu2plJMVs5t7dwH3F3P4jWurm5+bbbbrPWTvxMirvg2LFjmUxm8eLF7h9T6WzbLz49q+gdI8H3KwQiZKx4mguCSisylv7WPbr/6NCvXhtsfit56W0DaCv/a2OxoPNvhnvgYNasWZs2bXI1Y+Ke4irHM888s379+n379g0MDBSHI2b0vaJTP1M8WTQVi1DWSCYrWV9qooE7bok0rih/szvVeTKtFedEPjy6qo0fpLoyopRyKZnKDjaTybz66qvpdLqpqampqam0rPybn/3w1z9ByRRNeizsNt6uNI9mJJ7MxiqDt1xbuKs5njNtmvKGC8SJEyfa2tqY2Q3RJ7hYRA4dOtTe3u7OXwIBLz549oaKfk8rkem1YyYKBdXAsN/SmcylNRzlE7cg3bhxYyKRCAQCSil39HppIXFnbDt27HAlRKzNZv251xR+bGF0OGX1NF82ISoI8ts9mZb2JBPlyvgjv8JhjGHm/fv3r169+uWXX+7p6XFjDzcXd7XE/aCUSqfTO3fuPFdyWIho1YLikkL2jUx7HS/kKX7t2FAyZVnlzILUozzjKkFra2tjY2MsFlu5cmVDQ0N9fX1lZeXYztb98NRTTx09etQ9xuJWGLEZwXChGh61ExzlvP/eh3b+eTC3Nod5+vynm4CN3XReUVFRV1e3bt262traioqKjo6OrVu3Pv/882N3j7r955ya0PfXxz56SzhcqK2VjC/pjGWe5DE7K1QQ5OMn05/8Tsdg0pzbVyMcV35E3LJjbM0RjUYjkUhvb286nb78GSzRvGsLVy6K1C0tuWlWQawymPUllbG+JRFRl5u4+kaiEe8nO/u+9ZMTSrG1gsqRW0MzdgOxsVrilq6X7k7Hp+WGa0J3zo/ctaTk9pvCZREd0DycMln/4o4jRAHNX/5h1+5DcTcTQzhytZaM7WPfd3rhxhfyr7vRPlwVXLu45M754WXzwtdEg8ZK1oh72I6ZA5p7B7KrHnlraMTk0HiU8OUtlx1vTHYNuYdv1flJaDxpjhwf+dVrg795ffDI8RFmChd6VeWBgqDK+hKNeC/vP7vj4GBuJQOV44PqShcc5RDRrJnB2nnhNYtLVi4IDwyZB7Z0tZ9I5dBSFP4LXYlJXfgdISVFOujhEwgXpkTrf21ccvSW9TwN9bQeX5vKQmSCjkNCaCZw1X2E8vPPLikpKS0tncoXbyil4vF4IpHIw1cp785W3HTrwQcffOyxxzKZzMR3nxtjgsHg5s2bn3766cuOxRCOq7NyuG8XneLF+fkq5Wk43HnKpM+tuAvy9uuL8zQcPM5ULsvTDTnW5IBwAMIBCAcgHIBwAMIBCAcgHIBwAMIBgHAAwgEIByAcgHAAwgEIByAcgHAAwgGAcADCAQgHIByAcADCAQgHIByAcADCAYBwAMIBCAcgHIBwAMIBCAcgHIBwAMIBCAcAwgEIByAcgHAAwgEIByAcgHAAwgEIBwDCAQgHIByAcADCAQgHIByAcADCAQgHAMIBCAcgHPBB8vLzzxYRY4wxZuLL3AUignDkkVAopLXWWk98mbsgFAohHPlSM4iou7v78OHD1lqlJmqs7oLu7u58rh8Al8F5+mczT1wzLqofKBsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADT9E9pTm6JbU+ungAAAABJRU5ErkJggg==">
+<meta name="theme-color" content="#08080a">
+<meta property="og:title" content="ORSIVA — Orbital Risk &amp; Liability Intelligence">
+<meta property="og:description" content="Advisory decision intelligence for satellite end-of-life: when to act, what waiting costs, and the evidence behind every verdict.">
+<meta property="og:url" content="https://orsiva.space">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#04060c; --txt:#eaf0fb; --muted:#7e8bab; --dim:#4a5573;
-    --line:rgba(255,255,255,.07); --glass:rgba(10,15,26,.66);
-    --navis:#3f6fdc; --green:#36c08a; --amber:#e0a23a; --blue:#a78bfa; --red:#e85563;
-    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{background:var(--bg);color:var(--txt);font-family:var(--font);overflow:hidden}
-  #sky{position:fixed;inset:0;width:100vw;height:100vh;display:block}
-  .float{position:fixed;background:var(--glass);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(14px)}
-  .rail{left:16px;top:50%;transform:translateY(-50%);width:62px;padding:10px 0;display:flex;flex-direction:column;align-items:center;gap:4px}
-  .ic{position:relative;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);cursor:pointer}
-  .ic:hover{color:var(--txt);background:rgba(255,255,255,.05)}
-  .ic.on{color:var(--navis);background:rgba(63,111,220,.12)}
-  .ic.on::before{content:"";position:absolute;left:-10px;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--navis)}
-  .ic svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .ic .lbl{position:absolute;left:54px;white-space:nowrap;background:rgba(6,10,18,.96);border:1px solid var(--line);border-radius:8px;padding:5px 9px;font-size:11px;color:var(--txt);opacity:0;pointer-events:none;transition:opacity .12s}
-  .ic:hover .lbl{opacity:1}
-  .rail .div{width:26px;height:1px;background:var(--line);margin:6px 0}
-  .brand{left:92px;top:22px;background:none;border:none}
-  .brand b{font-size:19px;letter-spacing:5px;font-weight:600;color:#fff}
-  .brand b em{font-style:normal;color:var(--navis)}
-  .brand div{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:3px}
-  .purpose{left:50%;top:22px;transform:translateX(-50%);padding:9px 16px;display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--txt)}
-  .purpose .d{width:7px;height:7px;border-radius:50%;background:var(--navis)} .purpose b{color:#fff;font-weight:600}
-  .status{right:26px;top:20px;display:flex;align-items:center;gap:16px;padding:9px 16px}
-  .status .l{font-size:9px;letter-spacing:1.4px;color:var(--dim);text-transform:uppercase} .status .v{font-family:var(--mono);font-size:14px;color:#fff}
-  .status .badge{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:6px} .status .pd{width:6px;height:6px;border-radius:50%;background:var(--amber)}
-  .status .clock{font-family:var(--mono);font-size:11px;color:var(--muted)}
-  .controls{left:92px;bottom:24px;padding:14px 16px;width:228px}
-  .controls .lab{font-size:10px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;margin-bottom:8px}
-  .pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-  .pill{font-size:11px;padding:5px 10px;border-radius:18px;border:1px solid var(--line);color:var(--muted);cursor:pointer}
-  .pill.on{background:rgba(63,111,220,.14);color:var(--navis);border-color:rgba(63,111,220,.4)}
-  .row{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:5px} .row b{color:#fff;font-family:var(--mono)}
-  input[type=range]{width:100%;accent-color:var(--navis)}
-  .chk{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);cursor:pointer;margin-top:10px}
-  .chk i{width:8px;height:8px;border-radius:50%;border:1px solid var(--line)} .chk.on{color:var(--txt)} .chk.on i{background:var(--navis);border-color:var(--navis)}
-  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px} .legend span{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted)} .legend i{width:9px;height:9px;border-radius:3px}
-  .queue{right:26px;top:74px;width:236px;max-height:42vh;display:flex;flex-direction:column;overflow:hidden}
-  .queue .qh{padding:12px 15px 8px;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between} .queue .qh b{color:var(--amber);font-family:var(--mono)}
-  .queue .ql{overflow:auto;padding:0 8px 10px}
-  .qrow{display:flex;align-items:center;gap:9px;padding:8px;border-radius:9px;cursor:pointer} .qrow:hover{background:rgba(255,255,255,.04)} .qrow.sel{background:rgba(63,111,220,.08)}
-  .qrow .t{width:5px;height:24px;border-radius:3px;flex:none} .qrow .m{flex:1;min-width:0} .qrow .m .id{font-size:12px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .qrow .m .s{font-size:10px;color:var(--muted);font-family:var(--mono)} .qrow .mo{font-family:var(--mono);font-size:11px;color:var(--txt)}
-  .dossier{right:26px;top:50%;transform:translateY(-50%);width:300px;max-height:80vh;overflow:auto;padding:18px;display:none}
-  .dossier.show{display:block} .dossier .x{position:absolute;right:14px;top:12px;color:var(--muted);cursor:pointer;font-size:16px;line-height:1}
-  .kick{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)} .nm{font-size:17px;font-weight:600;color:#fff;margin-top:3px}
-  .dp{display:inline-block;margin-top:10px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:8px}
-  .gauge{display:flex;align-items:center;gap:13px;margin:14px 0} .gauge canvas{width:66px;height:66px} .gv{font-family:var(--mono);font-size:20px;color:#fff} .gl{font-size:10.5px;color:var(--muted)}
-  .kv{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px solid var(--line);color:var(--muted)} .kv b{color:var(--txt);font-family:var(--mono);font-weight:500}
-  .sec{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted);margin:14px 0 4px}
-  .jur{display:flex;gap:6px} .jb{flex:1;text-align:center;font-size:10px;padding:5px 0;border-radius:7px;border:1px solid var(--line)}
-  .loss{display:flex;justify-content:space-between;align-items:flex-end;gap:7px;height:54px;margin-top:6px} .loss .c{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
-  .loss .c .b{width:62%;background:var(--navis);opacity:.8;border-radius:3px 3px 0 0} .loss .c em{font-family:var(--mono);font-size:9.5px;color:var(--txt);font-style:normal} .loss .c small{font-size:9.5px;color:var(--dim)}
-  .aud{margin-top:12px;font-family:var(--mono);font-size:9px;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:9px}
-  .mp{left:50%;bottom:24px;transform:translateX(-50%);display:flex;overflow:hidden} .mp .m{padding:11px 22px;text-align:center;border-right:1px solid var(--line)} .mp .m:last-child{border-right:none}
-  .mp .m .l{font-size:9px;letter-spacing:1px;color:var(--dim);text-transform:uppercase} .mp .m .v{font-family:var(--mono);font-size:17px;color:#fff;margin-top:2px}
-  .hintc{left:50%;bottom:72px;transform:translateX(-50%);font-size:10.5px;color:var(--dim);background:none;border:none}
-  .tip{position:fixed;pointer-events:none;background:rgba(6,10,18,.96);border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:11px;display:none;z-index:9}
-  .tip .id{color:#fff;margin-bottom:2px} .tip .r{display:flex;justify-content:space-between;gap:14px;color:var(--muted);font-family:var(--mono);font-size:10px}
-  .toast{left:50%;top:64px;transform:translateX(-50%);padding:9px 14px;font-size:12px;color:var(--navis);display:none}
-  .loading{left:50%;top:50%;transform:translate(-50%,-50%);font-size:12px;color:var(--muted);background:none;border:none}
+:root {
+  --black:   #08080a;
+  --black2:  #0e0e11;
+  --black3:  #141417;
+  --white:   #ffffff;
+  --white2:  #eceef0;
+  --white3:  #c7cbd1;
+  --gold:    #E3A72F;
+  --gold2:   #F0C25A;
+  --gold3:   #F8DDA0;
+  --golddim: rgba(227,167,47,0.10);
+  --goldbdr: rgba(227,167,47,0.22);
+  --bdr:     rgba(255,255,255,0.07);
+  --bdr2:    rgba(255,255,255,0.13);
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body:    'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --cond:    'Barlow Condensed', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 18.5px; }
+body { font-family: var(--body); background: var(--black); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+::selection { background: rgba(227,167,47,0.25); color: var(--white); }
+.page { display: none; }
+.page.active { display: block; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 76px; display: flex; align-items: center; justify-content: space-between; padding: 0 64px; border-bottom: 1px solid transparent; transition: background 0.4s, border-color 0.4s; }
+nav.scrolled { background: rgba(8,8,10,0.93); backdrop-filter: blur(20px); border-color: var(--bdr); }
+.nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
+.nav-logo-word { font-family: var(--cond); font-size: 24px; font-weight: 600; letter-spacing: 0.2em; color: var(--white); position: relative; z-index: 1; }
+.nav-logo-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.logo-i { text-transform: lowercase; color: #E3A72F; }
+/* clean wordmark — orbit ring and satellite removed */
+.logo-orbit { position: relative; display: inline-flex; align-items: center; }
+.nav-center { display: flex; gap: 44px; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav-center a { font-family: var(--cond); font-size: 15px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white3); text-decoration: none; transition: color 0.2s; }
+.nav-center a:hover { color: var(--gold2); }
+.nav-cta-btn { font-family: var(--cond); font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 11px 26px; border: 1px solid var(--goldbdr); color: var(--gold2); background: var(--golddim); border-radius: 2px; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.nav-cta-btn:hover { background: rgba(227,167,47,0.18); border-color: var(--gold); color: var(--gold3); }
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 150px 64px 110px; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(227,167,47,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(227,167,47,0.035) 1px, transparent 1px); background-size: 80px 80px; }
+.hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 65% at 50% 50%, transparent 25%, var(--black) 100%); }
+.hero-inner { position: relative; z-index: 2; max-width: 1000px; }
+.hero-overline { font-family: var(--cond); font-size: 13px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 36px; display: flex; align-items: center; justify-content: center; gap: 16px; opacity: 0; animation: fadeUp 0.8s 0.1s forwards; }
+.hero-overline::before, .hero-overline::after { content: ''; display: block; width: 44px; height: 1px; background: var(--goldbdr); }
+.hero-title { font-family: var(--display); font-size: clamp(56px, 8.5vw, 112px); font-weight: 300; line-height: 0.95; letter-spacing: -0.01em; color: var(--white); margin-bottom: 14px; opacity: 0; animation: fadeUp 0.9s 0.25s forwards; }
+.hero-title em { font-style: italic; color: var(--gold2); font-weight: 300; }
+.hero-title-sub { font-family: var(--display); font-size: clamp(16px, 2vw, 22px); font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: var(--white3); margin-bottom: 40px; opacity: 0; animation: fadeUp 0.9s 0.35s forwards; }
+.hero-desc { max-width: 660px; margin: 0 auto 52px; font-size: 20px; font-weight: 400; line-height: 1.75; color: var(--white2); opacity: 0; animation: fadeUp 0.9s 0.45s forwards; }
+.hero-desc strong { color: var(--white); font-weight: 400; }
+.hero-actions { display: flex; align-items: center; justify-content: center; gap: 16px; opacity: 0; animation: fadeUp 0.9s 0.55s forwards; }
+.btn-gold { font-family: var(--cond); font-size: 15px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 17px 38px; background: var(--gold); color: var(--black); border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 10px; }
+.btn-gold:hover { background: var(--gold2); transform: translateY(-1px); }
+.btn-outline { font-family: var(--cond); font-size: 15px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; padding: 16px 32px; background: transparent; color: var(--white2); border: 1px solid var(--bdr2); border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn-outline:hover { border-color: var(--goldbdr); color: var(--gold2); }
+.hero-rule { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 90px; background: linear-gradient(to bottom, var(--gold), transparent); z-index: 2; opacity: 0; animation: fadeIn 1s 1.2s forwards; }
+.stat-bar { border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); display: flex; }
+.stat-item { flex: 1; padding: 40px 44px; border-right: 1px solid var(--bdr); transition: background 0.3s; }
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(227,167,47,0.03); }
+.stat-num { font-family: var(--display); font-size: 48px; font-weight: 500; font-variant-numeric: tabular-nums lining-nums; letter-spacing: 0.01em; color: var(--gold2); line-height: 1; margin-bottom: 8px; }
+.stat-label { font-family: var(--cond); font-size: 13px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white3); line-height: 1.6; }
+.section { padding: 120px 64px; }
+.section-tag { font-family: var(--cond); font-size: 12.5px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.section-tag::after { content: ''; display: block; width: 32px; height: 1px; background: var(--goldbdr); }
+.section-h { font-family: var(--display); font-size: clamp(36px, 4.5vw, 60px); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; color: var(--white); margin-bottom: 22px; }
+.section-h em { font-style: italic; color: var(--white2); }
+.section-p { font-size: 18px; font-weight: 400; line-height: 1.85; color: var(--white2); max-width: 540px; }
+.problem-intro { max-width: 820px; margin: 0 auto 64px; text-align: center; }
+.problem-intro .lead { font-family: var(--display); font-size: 28px; font-weight: 400; line-height: 1.5; color: var(--white); }
+.problem-intro .lead strong { font-weight: 500; color: var(--white); }
+.problem-cta { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 64px; }
+.work-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); margin-top: 56px; }
+.work-card { background: var(--black); padding: 42px 38px; transition: background 0.3s; }
+.work-card:hover { background: var(--black2); }
+.work-n { font-family: var(--display); font-style: italic; font-size: 24px; color: var(--gold2); margin-bottom: 14px; }
+.work-t { font-family: var(--display); font-size: 27px; font-weight: 400; color: var(--white); margin-bottom: 12px; }
+.work-d { font-size: 16px; font-weight: 400; line-height: 1.72; color: var(--white2); }
+.work-cta { text-align: center; margin-top: 52px; }
+@media(max-width:1000px){ .work-grid{ grid-template-columns: 1fr; } }
+.container { max-width: 1140px; margin: 0 auto; }
+.problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+.silo-stack { display: flex; flex-direction: column; }
+.silo-item { padding: 30px 0; border-bottom: 1px solid var(--bdr); display: flex; gap: 28px; align-items: flex-start; }
+.silo-item:first-child { border-top: 1px solid var(--bdr); }
+.silo-num { font-family: var(--display); font-size: 15.5px; font-style: italic; color: var(--gold); min-width: 24px; padding-top: 3px; }
+.silo-title { font-family: var(--cond); font-size: 15.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 7px; }
+.silo-desc { font-size: 16px; font-weight: 400; color: var(--white3); line-height: 1.75; }
+.silo-footer { margin-top: 26px; padding: 18px 26px; border: 1px solid rgba(227,167,47,0.15); background: rgba(227,167,47,0.04); border-radius: 2px; font-family: var(--cond); font-size: 15px; font-weight: 400; letter-spacing: 0.06em; color: var(--gold2); line-height: 1.65; }
+.framework-section { background: var(--black2); border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); }
+.framework-header { text-align: center; max-width: 680px; margin: 0 auto 70px; }
+.framework-header .section-tag { justify-content: center; }
+.framework-header .section-tag::after { display: none; }
+.fw-grid-top { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); border-bottom: none; }
+.fw-grid-bot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); }
+.fw-col { background: var(--black); padding: 38px 26px; position: relative; transition: background 0.3s; }
+.fw-col:hover { background: rgba(227,167,47,0.025); }
+.fw-col.accent { background: rgba(227,167,47,0.05); }
+.fw-col.accent::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+.fw-layer { font-family: var(--cond); font-size: 12.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+.fw-title { font-family: var(--display); font-size: 20px; font-weight: 400; color: var(--white); line-height: 1.25; margin-bottom: 11px; }
+.fw-desc { font-size: 15px; font-weight: 400; color: var(--white3); line-height: 1.7; }
+.fw-badge { display:inline-block; margin-top:14px; font-family:var(--cond); font-size:12.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold2); border:1px solid var(--goldbdr); border-radius:2px; padding:4px 9px; }
+.science-section { background: var(--black); border-bottom: 1px solid var(--bdr); }
+.science-header { max-width: 680px; margin-bottom: 64px; }
+.science-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.sci-panel { background: var(--black2); padding: 48px 44px; border: 1px solid var(--bdr); transition: border-color 0.3s; }
+.sci-panel:hover { border-color: var(--goldbdr); }
+.sci-panel-num { font-family: var(--display); font-size: 15px; font-style: italic; color: var(--gold); margin-bottom: 20px; display: block; }
+.sci-panel-title { font-family: var(--display); font-size: 28px; font-weight: 400; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+.sci-panel-title em { font-style: italic; color: var(--gold2); }
+.sci-panel-desc { font-size: 17px; font-weight: 400; color: var(--white2); line-height: 1.8; margin-bottom: 24px; }
+.sci-formula { font-family: var(--cond); font-size: 16px; font-weight: 400; letter-spacing: 0.04em; color: var(--gold3); padding: 16px 20px; background: rgba(227,167,47,0.06); border-left: 2px solid var(--gold); border-radius: 0 2px 2px 0; line-height: 1.7; margin-bottom: 16px; }
+.sci-formula em { font-style: italic; color: var(--gold2); }
+.sci-explain { font-size: 15.5px; font-weight: 400; color: var(--white3); line-height: 1.8; }
+.sci-explain span { color: var(--gold2); }
+.sci-full { grid-column: 1 / -1; background: var(--black2); padding: 48px 44px; border: 1px solid var(--bdr); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; transition: border-color 0.3s; }
+.sci-full:hover { border-color: var(--goldbdr); }
+.sci-col-title { font-family: var(--cond); font-size: 12.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.sci-col-body { font-size: 16px; font-weight: 400; color: var(--white2); line-height: 1.8; }
+.sci-col-body em { font-style: italic; color: var(--gold2); }
+.diff-layout { display: grid; grid-template-columns: 1fr 1fr; }
+.diff-panel { padding: 56px 52px; background: var(--black2); }
+.diff-panel.left { border-right: 1px solid var(--bdr); }
+.diff-panel-tag { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+.diff-panel-tag.no { color: var(--white3); }
+.diff-panel-tag.yes { color: var(--gold); }
+.diff-list { display: flex; flex-direction: column; }
+.diff-row { display: flex; gap: 22px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--bdr); font-size: 17px; font-weight: 400; color: var(--white2); line-height: 1.7; }
+.diff-row:last-child { border-bottom: none; }
+.diff-marker { font-family: var(--display); font-style: italic; font-size: 17px; min-width: 16px; padding-top: 2px; }
+.diff-marker.no { color: var(--white3); }
+.diff-marker.yes { color: var(--gold); }
+.diff-row strong { color: var(--white); font-weight: 400; }
+.audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--bdr); margin-top: 2px; }
+.aud-col { padding: 44px 34px; border-right: 1px solid var(--bdr); transition: background 0.25s; }
+.aud-col:last-child { border-right: none; }
+.aud-col:hover { background: rgba(227,167,47,0.04); }
+.aud-for { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.aud-title { font-family: var(--display); font-size: 28px; font-weight: 400; color: var(--white); margin-bottom: 22px; border-bottom: 1px solid var(--bdr); padding-bottom: 18px; }
+.aud-items { display: flex; flex-direction: column; gap: 11px; }
+.aud-item { font-size: 15.5px; font-weight: 400; color: var(--white2); line-height: 1.6; padding-left: 16px; position: relative; }
+.aud-item::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 13px; }
+.roadmap-layout { display: grid; grid-template-columns: 5fr 4fr; gap: 100px; align-items: start; }
+.roadmap-list { display: flex; flex-direction: column; }
+.rm-step { display: grid; grid-template-columns: 52px 1fr; gap: 26px; padding: 36px 0; border-bottom: 1px solid var(--bdr); }
+.rm-step:last-child { border-bottom: none; }
+.rm-num { font-family: var(--display); font-size: 15.5px; font-style: italic; color: var(--white3); padding-top: 4px; }
+.rm-num.active { color: var(--gold); }
+.rm-title { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--white); margin-bottom: 6px; }
+.rm-title.active { color: var(--gold2); }
+.rm-when { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.rm-when.future { color: var(--white3); }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+.rm-desc { font-size: 16px; font-weight: 400; color: var(--white3); line-height: 1.75; }
+.research-panel { padding: 44px; border: 1px solid var(--bdr); background: var(--black2); }
+.research-panel-title { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 30px; }
+.ri { padding: 18px 0; border-bottom: 1px solid var(--bdr); display: flex; gap: 20px; }
+.ri:last-child { border-bottom: none; }
+.ri-n { font-family: var(--display); font-style: italic; font-size: 15.5px; color: var(--gold); min-width: 22px; padding-top: 2px; }
+.ri-text { font-size: 16px; font-weight: 400; color: var(--white2); line-height: 1.7; }
+.cta-strip { padding: 110px 64px; background: var(--black2); border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); text-align: center; }
+.cta-contacts { display: flex; justify-content: center; gap: 2px; margin: 0 0 44px; flex-wrap: wrap; }
+.cta-contact-item { padding: 26px 40px; border: 1px solid var(--bdr); background: var(--black); text-align: center; text-decoration: none; min-width: 190px; transition: border-color 0.2s, background 0.2s; }
+.cta-contact-item:hover { border-color: var(--goldbdr); background: var(--golddim); }
+.cca-label { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold2); margin-bottom: 7px; }
+.cca-val { font-size: 15.5px; font-weight: 400; color: var(--white2); }
+footer { padding: 40px 64px; border-top: 1px solid var(--bdr); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-family: var(--cond); font-size: 18px; font-weight: 600; letter-spacing: 0.2em; color: var(--white2); }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a { font-family: var(--cond); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold2); }
+.footer-note { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.06em; color: var(--white3); opacity: 0.78; }
+#demo-page { min-height: 100vh; background: var(--black); padding: 130px 64px 90px; }
+.demo-inner { max-width: 700px; margin: 0 auto; }
+.demo-back { display: inline-flex; align-items: center; gap: 10px; font-family: var(--cond); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white3); cursor: pointer; border: none; background: none; margin-bottom: 64px; transition: color 0.2s; padding: 0; }
+.demo-back:hover { color: var(--gold2); }
+.demo-back:hover svg { transform: translateX(-3px); }
+.demo-back svg { transition: transform 0.2s; }
+.demo-tag { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.demo-title { font-family: var(--display); font-size: clamp(40px, 5.5vw, 68px); font-weight: 300; line-height: 1.05; color: var(--white); margin-bottom: 14px; }
+.demo-title em { font-style: italic; color: var(--white2); }
+.demo-sub { font-size: 18px; font-weight: 400; color: var(--white2); margin-bottom: 56px; line-height: 1.8; }
+.demo-rule { width: 64px; height: 1px; background: var(--goldbdr); margin-bottom: 56px; }
+.demo-form { display: flex; flex-direction: column; gap: 30px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-field { display: flex; flex-direction: column; gap: 9px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-label { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 6px; }
+.form-label span { color: var(--white3); font-size: 13px; letter-spacing: 0; }
+.form-input, .form-select, .form-textarea { background: var(--black2); border: 1px solid var(--bdr2); border-radius: 2px; color: var(--white); font-family: var(--body); font-size: 16px; font-weight: 400; padding: 14px 18px; outline: none; transition: border-color 0.2s; width: 100%; -webkit-appearance: none; }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--white3); }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--goldbdr); }
+.form-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888680' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; padding-right: 44px; }
+.form-select option { background: #0e0e11; color: var(--white); }
+.form-textarea { resize: vertical; min-height: 110px; line-height: 1.65; }
+.form-divider { height: 1px; background: var(--bdr); margin: 4px 0; }
+.form-note { font-size: 15px; font-weight: 400; color: var(--white3); line-height: 1.75; padding: 18px 22px; border-left: 2px solid var(--goldbdr); background: rgba(227,167,47,0.03); }
+.form-submit { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.form-submit-note { font-size: 15px; font-weight: 400; color: var(--white3); }
+.demo-success { display: none; text-align: center; padding: 80px 0; }
+.success-mark { width: 60px; height: 60px; border: 1px solid var(--goldbdr); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; color: var(--gold); font-size: 24px; font-family: var(--display); font-style: italic; }
+.success-title { font-family: var(--display); font-size: 42px; font-weight: 300; color: var(--white); margin-bottom: 14px; }
+.success-title em { font-style: italic; color: var(--gold2); }
+.success-sub { font-size: 17px; font-weight: 400; color: var(--white2); line-height: 1.8; max-width: 440px; margin: 0 auto 40px; }
+.verdict { display:grid; grid-template-columns:280px 1fr; gap:2px; border:1px solid var(--bdr); background:var(--bdr); }
+.verdict-score { background:rgba(227,167,47,0.05); padding:48px 36px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; }
+.verdict-score::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold2)); }
+.vs-num { font-family:var(--display); font-size:84px; font-weight:500; font-variant-numeric: tabular-nums lining-nums; letter-spacing:0.01em; color:var(--gold2); line-height:1; }
+.vs-of { font-family:var(--display); font-size:20px; color:var(--white3); margin-top:-2px; }
+.vs-label { font-family:var(--cond); font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-top:16px; }
+.vs-asset { font-family:var(--cond); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--white3); margin-top:8px; }
+.verdict-rows { background:var(--black); display:flex; flex-direction:column; }
+.verdict-row { padding:30px 40px; border-bottom:1px solid var(--bdr); display:grid; grid-template-columns:130px 1fr; gap:24px; align-items:center; }
+.verdict-row:last-child { border-bottom:none; }
+.vr-key { font-family:var(--cond); font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); }
+.vr-val strong { display:block; font-family:var(--display); font-size:22px; font-weight:400; color:var(--white); margin-bottom:5px; }
+.vr-val span { font-size:15.5px; font-weight:400; color:var(--white3); line-height:1.5; }
+@media(max-width:1000px){ .verdict{grid-template-columns:1fr} .verdict-row{grid-template-columns:1fr;gap:6px} }
+/* manifesto / capabilities (centred) */
+.manifesto { max-width: 780px; margin: 0 auto 72px; text-align: center; }
+.manifesto .section-tag { justify-content: center; }
+.manifesto .section-tag::after { display: none; }
+.manifesto-h { font-family: var(--display); font-size: clamp(40px,6.2vw,80px); font-weight: 300; line-height: 1.04; letter-spacing: -0.01em; color: var(--white); margin: 14px 0 26px; }
+.manifesto-h em { font-style: italic; color: var(--white2); }
+.manifesto-p { font-size: 21px; font-weight: 400; line-height: 1.65; color: var(--white2); max-width: 620px; margin: 0 auto; }
+.cap-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); }
+.cap { background: var(--black); padding: 48px 38px; text-align: center; transition: background .3s; }
+.cap:hover { background: rgba(227,167,47,0.03); }
+.cap-n { font-family: var(--display); font-style: italic; font-size: 30px; font-weight: 500; color: var(--white); margin-bottom: 18px; }
+.cap-t { font-family: var(--display); font-size: 32px; font-weight: 400; color: var(--white); margin-bottom: 12px; }
+.cap-d { font-size: 17px; font-weight: 400; color: var(--white2); line-height: 1.7; }
+.trio { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); border-top: none; }
+.trio-cell { background: var(--black2); padding: 34px 38px; text-align: center; }
+.trio-k { font-family: var(--cond); font-size: 12.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.trio-v { font-size: 16px; font-weight: 400; color: var(--white2); line-height: 1.7; }
+.trio-v em { font-style: italic; color: var(--gold2); }
+/* nav dropdowns */
+.nav-item { position: relative; height: 76px; display: flex; align-items: center; }
+.nav-trigger { font-family: var(--cond); font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); cursor: pointer; transition: color 0.2s; display: inline-flex; align-items: center; gap: 7px; }
+.nav-trigger::after { content: ''; width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg) translateY(-1px); opacity: 0.55; }
+.nav-item:hover .nav-trigger { color: var(--gold2); }
+.nav-drop { position: absolute; top: 76px; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 232px; background: rgba(8,8,10,0.97); backdrop-filter: blur(20px); border: 1px solid var(--bdr); border-radius: 3px; padding: 10px; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.22s, transform 0.22s; }
+.nav-item:hover .nav-drop { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.nav-drop a { font-family: var(--cond); font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white2); text-decoration: none; padding: 11px 16px; border-radius: 2px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+.nav-drop a:hover { background: var(--golddim); color: var(--gold2); }
+/* mobile menu */
+.nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-burger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+.mobile-menu { position: fixed; inset: 0; z-index: 190; background: rgba(8,8,10,0.985); backdrop-filter: blur(22px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a { font-family: var(--cond); font-size: 22px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); text-decoration: none; transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--gold2); }
+.mobile-close { position: absolute; top: 28px; right: 28px; background: none; border: none; color: var(--white); font-size: 30px; line-height: 1; cursor: pointer; }
+@media(max-width:1000px){ .nav-burger{ display: flex; } .nav-cta-btn{ display: none; } }
+@media(max-width:1000px){ .cap-grid,.trio{grid-template-columns:1fr;} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.scroll-reveal { opacity:0; transform:translateY(20px); transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+.scroll-reveal.revealed { opacity:1; transform:translateY(0); }
+.d1{transition-delay:0.1s} .d2{transition-delay:0.2s} .d3{transition-delay:0.3s} .d4{transition-delay:0.4s}
+@media(max-width:1000px){
+  nav{padding:0 28px} .nav-center{display:none}
+  .section{padding:80px 28px} .hero{padding:130px 28px 90px}
+  .problem-layout,.diff-layout,.roadmap-layout,.science-grid{grid-template-columns:1fr;gap:48px}
+  .fw-grid-top,.fw-grid-bot{grid-template-columns:1fr 1fr}
+  .audience-grid{grid-template-columns:1fr 1fr}
+  .aud-col{border-right:none;border-bottom:1px solid var(--bdr)}
+  .stat-bar{flex-wrap:wrap} .stat-item{flex:1 1 200px}
+  .sci-full{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center;padding:32px 28px}
+  .cta-strip{padding:80px 28px}
+  #demo-page{padding:110px 28px 70px}
+  .form-row{grid-template-columns:1fr}
+}
+
+/* === Added: score scale, faq === */
+.score-scale{max-width:760px;margin:36px auto 0;}
+.score-scale-track{position:relative;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--white3) 0%,rgba(227,167,47,0.45) 55%,var(--gold) 100%);}
+.score-scale-marker{position:absolute;top:-6px;width:2px;height:20px;background:var(--white);box-shadow:0 0 0 2px var(--black);}
+.score-scale-marker::after{content:attr(data-val);position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:17px;color:var(--gold2);}
+.score-scale-ends{display:flex;justify-content:space-between;margin-top:14px;font-family:var(--cond);font-size:12.5px;letter-spacing:0.13em;text-transform:uppercase;color:var(--white3);}
+.score-scale-ends b{color:var(--gold2);font-weight:500;}
+.score-scale-note{text-align:center;font-size:15px;font-weight:400;color:var(--white3);margin-top:14px;line-height:1.65;}
+.score-scale-note b{color:var(--white2);font-weight:400;}
+.faq-list{max-width:820px;margin:48px auto 0;border-top:1px solid var(--bdr);}
+.faq-item{border-bottom:1px solid var(--bdr);padding:26px 0;}
+.faq-q{font-family:var(--display);font-size:20px;font-weight:400;color:var(--white);margin-bottom:10px;}
+.faq-a{font-size:16px;font-weight:400;color:var(--white2);line-height:1.8;}
+.faq-a a{color:var(--gold2);text-decoration:none;}
+/* intro cover (page one) */
+.cover{position:relative;min-height:100vh;background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.cover-word{font-family:var(--cond);font-weight:600;font-size:clamp(64px,18vw,240px);line-height:1;letter-spacing:0.14em;color:var(--white);opacity:0;animation:coverIn 1.5s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;}
+.orsiva-i{position:relative;display:inline-block;width:0.16em;height:0.72em;vertical-align:baseline;margin:0 0.24em;}
+.orsiva-i .oi-stem{position:absolute;left:0;bottom:0;width:100%;height:0.5em;background:#E3A72F;border-radius:0.04em;}
+.orsiva-i .oi-sat{position:absolute;left:50%;bottom:0.54em;transform:translateX(-50%);width:0.86em;height:0.42em;line-height:0;}
+.orsiva-i .oi-sat svg{display:block;width:100%;height:100%;}
+.cover-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;background:none;border:none;opacity:0;animation:fadeIn 1s 1.6s forwards;}
+.cover-scroll .cs-label{font-family:var(--cond);font-size:12.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--white3);}
+.cover-arrow{width:1px;height:42px;background:linear-gradient(to bottom,var(--gold),transparent);animation:coverArrow 2.2s ease-in-out infinite;}
+@keyframes coverIn{from{opacity:0;letter-spacing:0.34em;transform:translateY(10px)}to{opacity:1;letter-spacing:0.14em;transform:translateY(0)}}
+@keyframes coverArrow{0%,100%{opacity:0.35;transform:scaleY(0.7)}50%{opacity:1;transform:scaleY(1)}}
+nav{transition:transform 0.55s cubic-bezier(0.16,1,0.3,1),opacity 0.4s,background 0.4s,border-color 0.4s;}
+nav.nav-hidden{transform:translateY(-100%);opacity:0;pointer-events:none;}
+@media(max-width:1000px){ .cover-word{letter-spacing:0.1em;} }
+
+/* === Readability pass (Sep 2026): 14px floor for all text, less tracking, phone breakpoint === */
+.sources-strip{padding:14px 64px;font-family:var(--body);font-size:14px;line-height:1.6;color:var(--white3);border-bottom:1px solid var(--bdr);}
+.validated-strip{border-bottom:1px solid var(--bdr);padding:18px 64px;display:flex;align-items:center;gap:18px;background:rgba(227,167,47,0.04);flex-wrap:wrap;}
+.vs-tag{font-family:var(--cond);font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+.vs-text{font-size:16px;color:var(--white2);font-weight:400;line-height:1.5;flex:1 1 320px;}
+.vs-link,.nav-access{font-family:var(--cond);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold2);white-space:nowrap;text-decoration:none;}
+.vs-link{margin-left:auto;}
+.nav-access{color:var(--white2);}
+.mini-label{font-family:var(--cond);font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+/* small condensed labels: 12.5-13px uppercase with 0.2em tracking reads like ~10px; lift and tighten */
+.section-tag,.fw-layer,.fw-badge,.sci-col-title,.diff-panel-tag,.aud-for,.rm-when,.research-panel-title,
+.cca-label,.demo-tag,.form-label,.vs-asset,.trio-k,.score-scale-ends,.cover-scroll .cs-label{font-size:14px;letter-spacing:0.12em;font-weight:500;}
+.stat-label,.vs-label,.vr-key,.footer-links a,.demo-back,.nav-cta-btn,.hero-overline{font-size:14px;letter-spacing:0.1em;}
+.form-label span{font-size:14px;}
+.footer-note{font-family:var(--body);font-size:14px;letter-spacing:0;opacity:1;color:var(--white3);line-height:1.6;}
+.hero-title-sub{font-weight:400;letter-spacing:0.18em;color:var(--white2);}
+.score-scale-note{font-size:16px;}
+@media(max-width:1000px){ .sources-strip,.validated-strip{padding-left:28px;padding-right:28px;} .vs-link{margin-left:0;} }
+@media(max-width:600px){
+  html{font-size:17px;}
+  nav{padding:0 20px}
+  .section{padding:64px 20px} .hero{padding:110px 20px 70px}
+  .sources-strip,.validated-strip{padding-left:20px;padding-right:20px;}
+  .fw-grid-top,.fw-grid-bot,.audience-grid{grid-template-columns:1fr}
+  .stat-item{flex:1 1 100%}
+  .stat-num{font-size:40px}
+  .vs-num{font-size:64px}
+  .hero-title-sub{letter-spacing:0.12em;}
+  .cta-strip{padding:64px 20px} #demo-page{padding:100px 20px 60px}
+}
+
+/* === Brand + content pass (Sep 2026) === */
+.wm{display:block;height:auto;color:var(--white);}
+.wm-nav{height:26px;width:auto;}
+.wm-footer{height:22px;width:auto;color:var(--white2);}
+.cover-word{font-size:0;letter-spacing:0;line-height:0;margin:0;animation:coverIn2 1.4s 0.15s cubic-bezier(0.16,1,0.3,1) forwards;}
+.wm-cover{width:clamp(260px,64vw,1040px);height:auto;margin:0 auto;}
+.cover-tag{margin-top:clamp(22px,3vw,40px);font-family:var(--cond);font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--white3);opacity:0;animation:fadeIn 1s 0.9s forwards;padding:0 20px;}
+@keyframes coverIn2{from{opacity:0;transform:translateY(12px) scale(0.985)}to{opacity:1;transform:none}}
+.subpage-outer{min-height:100vh;background:var(--black);padding:130px 64px 90px;}
+.footer-advisory{color:var(--white2);font-weight:500;}
+.legal-fill{color:var(--gold2);}
+.privacy-body{max-width:760px;margin-top:28px;}
+.privacy-body h3{font-family:var(--display);font-size:24px;font-weight:500;color:var(--white);margin:34px 0 10px;}
+.privacy-body p{font-size:16px;line-height:1.8;color:var(--white2);margin-bottom:12px;}
+.privacy-body a{color:var(--gold2);}
+.privacy-date{margin-top:30px;color:var(--white3)!important;font-size:14px!important;}
+.hero-actions{flex-wrap:wrap;}
+a.btn-outline{text-decoration:none;}
+@media(max-width:1000px){ .subpage-outer{padding:110px 28px 70px;} }
+@media(max-width:600px){ .subpage-outer{padding:100px 20px 60px;} .wm-nav{height:22px;} .hero-actions .btn-gold,.hero-actions .btn-outline{width:100%;justify-content:center;} }
+@media(prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:0.01ms!important;animation-delay:0s!important;transition-duration:0.01ms!important;} .scroll-reveal{opacity:1;transform:none;} }
+
+.footer-links{flex-wrap:wrap;justify-content:center;row-gap:12px;}
+@media(max-width:600px){
+  .wm-cover{width:84vw;}
+  .footer-links{gap:12px 20px;}
+  .nav-access{display:none;}
+  footer{padding:36px 20px;}
+}
+@media(max-width:600px){ .hero-rule{display:none;} }
 </style>
 </head>
 <body>
-<canvas id="sky"></canvas>
-<div class="rail float" id="rail"></div>
-<div class="brand float"><b>NAV<em>I</em>S</b><div style="text-transform:none;letter-spacing:.4px;font-size:10px">Navigation &amp; Intelligence for Sustainable Systems</div></div>
-<div class="purpose float" id="purpose"><span class="d"></span><span id="purposeTxt"></span></div>
-<div class="status float">
-  <div><div class="l">capital at risk</div><div class="v" id="money">—</div></div>
-  <span class="badge" id="srcBadge"><span class="pd"></span>demo · synthetic</span>
-  <span class="clock" id="clock">--:--:--</span>
-</div>
-<div class="queue float"><div class="qh"><span id="qhLabel">needs action</span> <b id="qn">0</b></div><div class="ql" id="queue"></div></div>
-<div class="controls float">
-  <div class="lab">Data source</div>
-  <div class="pills" id="srcsel"><span class="pill on" data-src="synthetic">Synthetic</span><span class="pill" data-src="live">Live · CelesTrak</span></div>
-  <div id="groupsWrap" style="display:none;margin-bottom:10px">
-    <div class="lab">Real groups</div><div class="pills" id="groupsel"></div>
-    <div style="font-size:10px;color:var(--dim)">orbits real · health estimated</div>
+<nav id="nav">
+  <div class="nav-logo" onclick="showPage('main')">
+    <span class="logo-orbit">
+      <svg class="wm wm-nav" viewBox="0 0 2231 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ORSIVA"><title>ORSIVA</title><path fill="currentColor" fill-rule="evenodd" d="M1293.8 201.5 1293 202.2 1293 502.5 1293.5 503.2 1355.2 503.2 1355.8 502.8 1355.8 202.2 1355 201.5ZM1985.8 74.8 1985 75.5 1864 498.8 1863.2 502.8 1863.8 503.2 1930.5 503.2 1931.5 502.5 1958.8 404.0 1960.2 402.2 2126.5 402.2 2128 403.8 2155.2 502.2 2156.2 503.2 2222.5 503.2 2223 501.8 2101.5 75.0ZM2039.5 115.5 2047.5 115.5 2049 117.2 2110 337.2 2110.5 340.5 2109.2 341.2 1977.5 341.2 1976.2 340.5 2038 116.8ZM1450.2 75.0 1451 79.2 1569 502.5 1569.8 503.2 1683.2 503.2 1684.5 500.8 1799.8 85.0 1801.8 77.8 1802 75.0 1734.5 74.8 1733.8 75.8 1630.8 461.0 1629 462.0 1623 461.8 1621.8 460.0 1518.8 76.0 1517.5 74.8ZM463.8 75.0 463.2 76.2 463.2 501.5 463.8 503.0 528.5 503.2 529.2 502.5 529.2 335.8 530 334.5 664 334.2 670.5 335.0 676.8 336.8 679.8 338.0 684.8 341.2 688.2 344.8 691.5 349.5 693.8 354.5 695.8 362.2 696.2 368.8 696.5 503.0 762.2 503.2 762.8 502.5 762.8 356.5 760.8 342.2 757.8 333.5 754.5 327.2 749.2 320.5 743.8 315.5 737.8 311.5 732.8 309.0 723.5 306.0 712.5 304.5 711.2 303.2 711.2 295.5 712.2 294.0 725 288.5 737 281.0 747.8 272.0 757 262.0 761.8 255.8 766.5 247.8 769.8 240.8 773.5 229.5 776.5 214.0 777.5 201.2 777.5 185.8 776.5 171.8 774.5 160.8 770.5 147.2 765.5 136.0 759.2 125.8 751 115.2 744 108.2 734.2 100.2 726.2 95.0 715 89.0 703.5 84.2 689.8 80.0 676.8 77.2 660.8 75.2 651.2 74.8ZM529.5 135.2 530.5 134.5 646.5 134.8 655 135.8 664.2 137.8 674.2 141.2 682 145.2 691 152.0 699.2 161.2 702.8 166.8 706 173.5 708 179.2 709.8 186.8 711 198.5 711 210.2 710 220.5 707 232.5 705 237.5 701.5 244.0 696 251.5 690.2 257.2 683 262.8 671 268.8 656.8 272.8 647.8 274.0 636 274.5 530.2 274.2 529.2 273.0ZM999.8 67.0 983.2 69.2 969.2 72.2 953.2 77.2 940 83.0 929.8 88.5 914.8 99.0 903.2 109.8 895.5 119.0 889 128.8 883.2 140.2 879 152.2 876 166.0 874.8 177.5 874.8 197.0 877 214.8 880.2 227.0 883.2 234.8 887 242.2 891.5 249.2 899.8 259.5 911.5 270.5 923.5 279.0 931.2 283.5 952.5 293.2 979 302.8 999 308.5 1042.8 319.0 1072.8 328.0 1089.5 334.8 1101.5 342.0 1105.5 345.2 1114.2 354.8 1118 361.2 1121 369.8 1122.5 379.0 1122.5 390.5 1121 400.5 1117.8 410.5 1115.8 414.8 1111.2 422.0 1107.2 427.0 1101.2 433.0 1092.2 439.8 1082.2 445.0 1068.2 449.8 1052.2 452.8 1035.5 454.0 1019.8 453.8 1009.5 452.8 999.2 451.0 988 448.0 980 445.0 971.2 440.8 962.5 435.2 954.8 429.0 948.5 422.5 940.8 411.2 936.8 402.8 933.8 394.0 930.8 378.5 930 368.8 930 348.8 929.2 348.0 865 348.2 864.8 370.0 866.2 388.8 869 403.8 873.5 419.0 876.8 427.2 881.5 437.0 888 447.8 898.2 461.0 907.8 470.8 918.2 479.5 930.2 487.5 946.2 495.8 961.8 501.8 979.8 506.8 994.8 509.5 1018 511.8 1042 511.8 1064.2 509.8 1077.2 507.5 1095.8 502.8 1110 497.5 1123 491.2 1136.2 483.2 1146.5 475.5 1157.2 465.2 1166.5 454.0 1173.5 443.0 1179.8 429.8 1183.8 417.8 1186.8 403.0 1188 387.0 1187.5 370.0 1184.8 353.0 1181.5 342.2 1178.8 335.5 1173 325.0 1165.5 315.0 1160.5 309.5 1154.2 303.5 1146.2 297.0 1138.2 291.5 1127.5 285.2 1105 275.2 1078 266.0 1052.8 259.2 1009 249.0 986.5 242.0 975 237.2 962.2 230.0 955.5 224.5 949.8 218.2 945 210.8 942 203.0 940 192.0 939.8 182.2 940.8 173.5 943 165.0 946.8 156.8 952 149.2 958.5 142.8 965.2 137.8 971.8 134.0 978.5 131.0 987.8 128.0 1006 124.8 1027.5 124.0 1039.2 124.8 1048.5 126.0 1057.8 128.0 1066.8 130.8 1078.5 136.0 1088.5 142.8 1097.5 151.8 1104 161.2 1108.8 172.2 1111.8 185.2 1113 201.8 1113 223.5 1114 224.0 1177.8 223.8 1178.2 222.8 1178.2 201.0 1177.8 187.5 1176.5 176.5 1173.8 162.5 1170.2 151.0 1166.8 142.2 1159.8 129.2 1148.8 114.5 1139.5 105.0 1131.5 98.2 1119.5 90.0 1108.5 84.0 1094.5 78.0 1079.8 73.2 1066.2 70.0 1054 68.0 1034.8 66.2 1019.2 66.0ZM166.2 66.2 146.2 68.0 123.5 72.2 105 78.0 93 83.0 85 87.0 70.8 95.8 62.8 101.8 53.5 109.8 47 116.2 40 124.5 34.5 132.0 28.2 142.0 21 156.8 15 173.2 11 189.0 8 207.2 7 217.5 6.2 235.0 6.5 351.2 8 370.8 11 389.0 15 404.8 21 421.2 28.2 436.0 36.2 448.5 45.5 460.0 58.5 472.8 71.5 482.8 86 491.5 98.8 497.5 116.2 503.8 132.5 507.8 150.5 510.5 166.8 511.8 190 511.8 212.2 509.8 234 505.5 252.5 499.8 263.8 495.0 272.8 490.5 290 479.5 303 468.8 315.8 455.2 323.5 444.8 329.5 435.0 336.8 420.0 342.5 404.0 346.5 388.0 349.5 369.2 351 345.8 350.8 224.0 349.5 208.8 346.8 191.0 342.5 174.0 336.2 156.8 329.2 142.5 320.8 129.2 310.8 117.0 298.2 105.0 285.5 95.2 270.5 86.2 254.5 79.0 239.8 74.0 223 70.0 204 67.2 182.5 66.0ZM173.5 125.2 183.5 125.2 194.8 126.0 206.2 127.8 215.8 130.0 224.5 133.0 236.5 138.8 244.2 143.8 250.8 149.0 258.2 156.5 265 165.0 271 174.8 275.8 185.0 279.8 197.0 282 206.8 283.8 219.0 284.5 231.0 284.5 346.8 284 356.5 282 371.2 279.8 381.0 275.8 393.0 273 399.2 267 410.0 258 421.8 249 430.5 237.2 438.8 225 444.8 212.8 448.8 196.8 451.8 183.2 452.8 173.8 452.8 160.2 451.8 149.8 450.0 138.8 447.0 128.5 443.0 120.2 438.8 112 433.2 104.5 427.0 97.8 420.0 91.5 412.0 85 401.2 81 392.5 77.8 383.2 74.8 371.0 73 359.0 72.2 347.5 72.2 230.5 72.8 221.5 74 211.2 77 197.2 83 180.8 90.8 167.0 97.8 158.0 107 148.8 119 140.0 131.2 133.8 145.5 129.0 156.5 126.8ZM1351.2 10.5 1350.2 10.5 1349.5 11.2 1339 44.0 1338.2 45.0 1328.2 42.0 1323.2 42.0 1320 43.0 1316 45.2 1312 49.8 1305.8 68.8 1305 69.5 1301.8 69.0 1288 64.2 1286.8 64.2 1284.2 70.5 1284.2 71.5 1285.2 72.5 1300 77.0 1302.2 78.2 1302.2 79.5 1296 98.8 1296 102.8 1297.2 107.0 1300.2 111.2 1305.8 114.8 1334.2 123.8 1337.2 123.8 1341.8 122.5 1345.5 120.2 1348.2 117.5 1350.8 112.8 1355.8 96.8 1356.5 95.8 1374.2 101.2 1375.8 99.5 1377.2 94.5 1376.2 93.0 1360.2 88.0 1359.2 87.2 1359.8 84.2 1365.2 67.5 1365.5 63.5 1364.8 60.0 1362.2 55.5 1360 53.2 1356.8 51.2 1348.8 48.8 1346.8 47.2 1357.5 14.5 1357.2 12.5Z"/><path fill="#E3A72F" d="M1384.2 77.2 1382 80.2 1377 97.0 1371 114.0 1370.5 118.0 1371.5 120.5 1373.8 122.5 1435 142.5 1438.2 142.8 1441 141.5 1443.5 137.8 1454.5 103.8 1454.8 100.5 1453.5 98.0 1451.8 96.5 1448.8 95.2 1389.2 76.0 1387 76.0ZM1220.5 24.0 1218.2 26.8 1207 61.2 1206.8 65.2 1208 67.8 1210.5 69.5 1272 89.5 1274.5 89.5 1276.8 88.5 1278.8 86.5 1279.8 84.2 1284 69.8 1290.8 50.2 1290.8 46.8 1289.5 44.5 1286.2 42.5 1226.2 23.0 1222.2 23.0Z"/></svg>
+    </span>
   </div>
-  <div class="lab">Constellation</div><div class="pills" id="fleetsel"></div>
-  <div class="lab">Legend</div><div class="legend" id="legend"></div>
-  <div class="row" style="margin-top:12px"><span>Fleet size</span><b id="szOut">600</b></div>
-  <input type="range" id="size" min="50" max="2000" step="50" value="600"/>
-  <div class="chk on" id="clusterTog"><i></i>Cluster healthy at scale</div>
+  <div class="nav-center">
+    <div class="nav-item">
+      <span class="nav-trigger">Platform</span>
+      <div class="nav-drop">
+        <a href="#" onclick="goTo('how');return false;">How It Works</a>
+        <a href="#" onclick="goTo('edge');return false;">Approach</a>
+        <a href="#" onclick="goTo('edge');return false;">The ORSIVA Score</a>
+        <a href="#" onclick="goTo('roadmap');return false;">Roadmap</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span class="nav-trigger">Who It's For</span>
+      <div class="nav-drop">
+        <a href="#" onclick="goTo('built');return false;">Operators</a>
+        <a href="#" onclick="goTo('built');return false;">Regulators</a>
+        <a href="#" onclick="goTo('built');return false;">Insurers</a>
+        <a href="#" onclick="goTo('built');return false;">Investors</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <span class="nav-trigger">Company</span>
+      <div class="nav-drop">
+        <a href="#" onclick="goTo('problem');return false;">The Challenge</a>
+        <a href="#" onclick="goTo('join');return false;">Work With Us</a>
+        <a href="#" onclick="goTo('faq');return false;">FAQ</a>
+        <a href="#" onclick="goTo('contact');return false;">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A" class="nav-access">Request Access &#8599;</a>
+    <button class="nav-cta-btn" onclick="showPage('demo')">Request a Demo</button>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+  <a href="#" onclick="goTo('how');closeMenu();return false;">How It Works</a>
+  <a href="#" onclick="goTo('edge');closeMenu();return false;">Approach</a>
+  <a href="#" onclick="goTo('built');closeMenu();return false;">Who It's For</a>
+  <a href="#" onclick="goTo('roadmap');closeMenu();return false;">Roadmap</a>
+  <a href="#" onclick="goTo('problem');closeMenu();return false;">The Challenge</a>
+  <a href="#" onclick="goTo('join');closeMenu();return false;">Work With Us</a>
+  <a href="#" onclick="goTo('contact');closeMenu();return false;">Contact</a>
+  <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Console%20Access%20Request&body=Name:%0AOrganisation:%0ARole:%0AReason%20for%20access:%0A">Request Access &#8599;</a>
+  <button class="btn-gold" style="margin-top:18px;" onclick="showPage('demo');closeMenu();">Request a Demo</button>
 </div>
-<div class="dossier float" id="dossier"><span class="x" id="closeD">&times;</span><div id="dbody"></div></div>
-<div class="hintc float">drag to rotate · scroll to zoom · click a satellite</div>
-<div class="mp float" id="metrics"></div>
-<div class="toast float" id="toast"></div>
-<div class="loading float" id="loading">loading 3D globe…</div>
-<div class="tip" id="tip"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<div id="main-page" class="page active">
+<section class="cover" id="cover">
+  <h1 class="cover-word"><svg class="wm wm-cover" viewBox="0 0 2231 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ORSIVA"><title>ORSIVA</title><path fill="currentColor" fill-rule="evenodd" d="M1293.8 201.5 1293 202.2 1293 502.5 1293.5 503.2 1355.2 503.2 1355.8 502.8 1355.8 202.2 1355 201.5ZM1985.8 74.8 1985 75.5 1864 498.8 1863.2 502.8 1863.8 503.2 1930.5 503.2 1931.5 502.5 1958.8 404.0 1960.2 402.2 2126.5 402.2 2128 403.8 2155.2 502.2 2156.2 503.2 2222.5 503.2 2223 501.8 2101.5 75.0ZM2039.5 115.5 2047.5 115.5 2049 117.2 2110 337.2 2110.5 340.5 2109.2 341.2 1977.5 341.2 1976.2 340.5 2038 116.8ZM1450.2 75.0 1451 79.2 1569 502.5 1569.8 503.2 1683.2 503.2 1684.5 500.8 1799.8 85.0 1801.8 77.8 1802 75.0 1734.5 74.8 1733.8 75.8 1630.8 461.0 1629 462.0 1623 461.8 1621.8 460.0 1518.8 76.0 1517.5 74.8ZM463.8 75.0 463.2 76.2 463.2 501.5 463.8 503.0 528.5 503.2 529.2 502.5 529.2 335.8 530 334.5 664 334.2 670.5 335.0 676.8 336.8 679.8 338.0 684.8 341.2 688.2 344.8 691.5 349.5 693.8 354.5 695.8 362.2 696.2 368.8 696.5 503.0 762.2 503.2 762.8 502.5 762.8 356.5 760.8 342.2 757.8 333.5 754.5 327.2 749.2 320.5 743.8 315.5 737.8 311.5 732.8 309.0 723.5 306.0 712.5 304.5 711.2 303.2 711.2 295.5 712.2 294.0 725 288.5 737 281.0 747.8 272.0 757 262.0 761.8 255.8 766.5 247.8 769.8 240.8 773.5 229.5 776.5 214.0 777.5 201.2 777.5 185.8 776.5 171.8 774.5 160.8 770.5 147.2 765.5 136.0 759.2 125.8 751 115.2 744 108.2 734.2 100.2 726.2 95.0 715 89.0 703.5 84.2 689.8 80.0 676.8 77.2 660.8 75.2 651.2 74.8ZM529.5 135.2 530.5 134.5 646.5 134.8 655 135.8 664.2 137.8 674.2 141.2 682 145.2 691 152.0 699.2 161.2 702.8 166.8 706 173.5 708 179.2 709.8 186.8 711 198.5 711 210.2 710 220.5 707 232.5 705 237.5 701.5 244.0 696 251.5 690.2 257.2 683 262.8 671 268.8 656.8 272.8 647.8 274.0 636 274.5 530.2 274.2 529.2 273.0ZM999.8 67.0 983.2 69.2 969.2 72.2 953.2 77.2 940 83.0 929.8 88.5 914.8 99.0 903.2 109.8 895.5 119.0 889 128.8 883.2 140.2 879 152.2 876 166.0 874.8 177.5 874.8 197.0 877 214.8 880.2 227.0 883.2 234.8 887 242.2 891.5 249.2 899.8 259.5 911.5 270.5 923.5 279.0 931.2 283.5 952.5 293.2 979 302.8 999 308.5 1042.8 319.0 1072.8 328.0 1089.5 334.8 1101.5 342.0 1105.5 345.2 1114.2 354.8 1118 361.2 1121 369.8 1122.5 379.0 1122.5 390.5 1121 400.5 1117.8 410.5 1115.8 414.8 1111.2 422.0 1107.2 427.0 1101.2 433.0 1092.2 439.8 1082.2 445.0 1068.2 449.8 1052.2 452.8 1035.5 454.0 1019.8 453.8 1009.5 452.8 999.2 451.0 988 448.0 980 445.0 971.2 440.8 962.5 435.2 954.8 429.0 948.5 422.5 940.8 411.2 936.8 402.8 933.8 394.0 930.8 378.5 930 368.8 930 348.8 929.2 348.0 865 348.2 864.8 370.0 866.2 388.8 869 403.8 873.5 419.0 876.8 427.2 881.5 437.0 888 447.8 898.2 461.0 907.8 470.8 918.2 479.5 930.2 487.5 946.2 495.8 961.8 501.8 979.8 506.8 994.8 509.5 1018 511.8 1042 511.8 1064.2 509.8 1077.2 507.5 1095.8 502.8 1110 497.5 1123 491.2 1136.2 483.2 1146.5 475.5 1157.2 465.2 1166.5 454.0 1173.5 443.0 1179.8 429.8 1183.8 417.8 1186.8 403.0 1188 387.0 1187.5 370.0 1184.8 353.0 1181.5 342.2 1178.8 335.5 1173 325.0 1165.5 315.0 1160.5 309.5 1154.2 303.5 1146.2 297.0 1138.2 291.5 1127.5 285.2 1105 275.2 1078 266.0 1052.8 259.2 1009 249.0 986.5 242.0 975 237.2 962.2 230.0 955.5 224.5 949.8 218.2 945 210.8 942 203.0 940 192.0 939.8 182.2 940.8 173.5 943 165.0 946.8 156.8 952 149.2 958.5 142.8 965.2 137.8 971.8 134.0 978.5 131.0 987.8 128.0 1006 124.8 1027.5 124.0 1039.2 124.8 1048.5 126.0 1057.8 128.0 1066.8 130.8 1078.5 136.0 1088.5 142.8 1097.5 151.8 1104 161.2 1108.8 172.2 1111.8 185.2 1113 201.8 1113 223.5 1114 224.0 1177.8 223.8 1178.2 222.8 1178.2 201.0 1177.8 187.5 1176.5 176.5 1173.8 162.5 1170.2 151.0 1166.8 142.2 1159.8 129.2 1148.8 114.5 1139.5 105.0 1131.5 98.2 1119.5 90.0 1108.5 84.0 1094.5 78.0 1079.8 73.2 1066.2 70.0 1054 68.0 1034.8 66.2 1019.2 66.0ZM166.2 66.2 146.2 68.0 123.5 72.2 105 78.0 93 83.0 85 87.0 70.8 95.8 62.8 101.8 53.5 109.8 47 116.2 40 124.5 34.5 132.0 28.2 142.0 21 156.8 15 173.2 11 189.0 8 207.2 7 217.5 6.2 235.0 6.5 351.2 8 370.8 11 389.0 15 404.8 21 421.2 28.2 436.0 36.2 448.5 45.5 460.0 58.5 472.8 71.5 482.8 86 491.5 98.8 497.5 116.2 503.8 132.5 507.8 150.5 510.5 166.8 511.8 190 511.8 212.2 509.8 234 505.5 252.5 499.8 263.8 495.0 272.8 490.5 290 479.5 303 468.8 315.8 455.2 323.5 444.8 329.5 435.0 336.8 420.0 342.5 404.0 346.5 388.0 349.5 369.2 351 345.8 350.8 224.0 349.5 208.8 346.8 191.0 342.5 174.0 336.2 156.8 329.2 142.5 320.8 129.2 310.8 117.0 298.2 105.0 285.5 95.2 270.5 86.2 254.5 79.0 239.8 74.0 223 70.0 204 67.2 182.5 66.0ZM173.5 125.2 183.5 125.2 194.8 126.0 206.2 127.8 215.8 130.0 224.5 133.0 236.5 138.8 244.2 143.8 250.8 149.0 258.2 156.5 265 165.0 271 174.8 275.8 185.0 279.8 197.0 282 206.8 283.8 219.0 284.5 231.0 284.5 346.8 284 356.5 282 371.2 279.8 381.0 275.8 393.0 273 399.2 267 410.0 258 421.8 249 430.5 237.2 438.8 225 444.8 212.8 448.8 196.8 451.8 183.2 452.8 173.8 452.8 160.2 451.8 149.8 450.0 138.8 447.0 128.5 443.0 120.2 438.8 112 433.2 104.5 427.0 97.8 420.0 91.5 412.0 85 401.2 81 392.5 77.8 383.2 74.8 371.0 73 359.0 72.2 347.5 72.2 230.5 72.8 221.5 74 211.2 77 197.2 83 180.8 90.8 167.0 97.8 158.0 107 148.8 119 140.0 131.2 133.8 145.5 129.0 156.5 126.8ZM1351.2 10.5 1350.2 10.5 1349.5 11.2 1339 44.0 1338.2 45.0 1328.2 42.0 1323.2 42.0 1320 43.0 1316 45.2 1312 49.8 1305.8 68.8 1305 69.5 1301.8 69.0 1288 64.2 1286.8 64.2 1284.2 70.5 1284.2 71.5 1285.2 72.5 1300 77.0 1302.2 78.2 1302.2 79.5 1296 98.8 1296 102.8 1297.2 107.0 1300.2 111.2 1305.8 114.8 1334.2 123.8 1337.2 123.8 1341.8 122.5 1345.5 120.2 1348.2 117.5 1350.8 112.8 1355.8 96.8 1356.5 95.8 1374.2 101.2 1375.8 99.5 1377.2 94.5 1376.2 93.0 1360.2 88.0 1359.2 87.2 1359.8 84.2 1365.2 67.5 1365.5 63.5 1364.8 60.0 1362.2 55.5 1360 53.2 1356.8 51.2 1348.8 48.8 1346.8 47.2 1357.5 14.5 1357.2 12.5Z"/><path fill="#E3A72F" d="M1384.2 77.2 1382 80.2 1377 97.0 1371 114.0 1370.5 118.0 1371.5 120.5 1373.8 122.5 1435 142.5 1438.2 142.8 1441 141.5 1443.5 137.8 1454.5 103.8 1454.8 100.5 1453.5 98.0 1451.8 96.5 1448.8 95.2 1389.2 76.0 1387 76.0ZM1220.5 24.0 1218.2 26.8 1207 61.2 1206.8 65.2 1208 67.8 1210.5 69.5 1272 89.5 1274.5 89.5 1276.8 88.5 1278.8 86.5 1279.8 84.2 1284 69.8 1290.8 50.2 1290.8 46.8 1289.5 44.5 1286.2 42.5 1226.2 23.0 1222.2 23.0Z"/></svg></h1>
+  <p class="cover-tag">Orbital risk &amp; liability intelligence for satellite operators</p>
+  <button class="cover-scroll" onclick="scrollToHero()" aria-label="Scroll to enter"><span class="cs-label">Scroll</span><span class="cover-arrow"></span></button>
+</section>
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-overline">Orbital Risk · Sustainability · Intelligence · Valuation Analytics</div>
+    <h2 class="hero-title">When should a<br>satellite <em>leave</em> orbit?</h2>
+    <div class="hero-title-sub">ORSIVA answers that question.</div>
+    <p class="hero-desc">Continuous risk and liability intelligence — per satellite, per fleet. Built for mid-tier LEO operators (10–300 satellites) and owners of single high-value assets. The ORSIVA Score tells you when to act, what it costs to wait, and the evidence behind the call.</p>
+    <div class="hero-actions">
+      <button class="btn-gold" onclick="showPage('demo')">Request a Demo <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      <a class="btn-outline" href="https://app.orsiva.space/backtest" target="_blank" rel="noopener">See the Iridium-33 backtest &#8599;</a>
+    </div>
+  </div>
+  <div class="hero-rule"></div>
+</section>
+
+<div class="stat-bar">
+  <div class="stat-item scroll-reveal"><div class="stat-num">5yr</div><div class="stat-label">New regulatory<br>disposal mandate</div></div>
+  <div class="stat-item scroll-reveal d1"><div class="stat-num">40–70%</div><div class="stat-label">of LEO payload mass meets<br>disposal guidelines</div></div>
+  <div class="stat-item scroll-reveal d2"><div class="stat-num">~40 mo</div><div class="stat-label">Earlier INITIATE flag on<br>Iridium-33 (backtest)</div></div>
+  <div class="stat-item scroll-reveal d3"><div class="stat-num">0</div><div class="stat-label">Commands sent to your<br>spacecraft — advisory only</div></div>
+</div>
+<div class="sources-strip">
+  Sources: 5-year LEO disposal rule — FCC Second Report &amp; Order, FCC 22-74 (2022), 47 CFR §25.114(d)(14) and §25.283; ESA Space Debris Mitigation Policy (2023). LEO post-mission disposal compliance ~40–70% of payload mass at end-of-life — <a href="https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2025" target="_blank" rel="noopener" style="color:var(--gold2);text-decoration:none;">ESA Space Environment Report 2025</a>. Backtest lead time: ORSIVA retrospective run — full working on the backtest page.
+</div>
+
+<div class="validated-strip">
+  <span class="vs-tag">Validated</span>
+  <span class="vs-text">Iridium-33 / Cosmos-2251 collision (Feb 2009) — ORSIVA flags Cosmos-2251 <strong style="color:var(--white2);font-weight:400;">INITIATE</strong> from day one (defunct, no fuel), Iridium-33 <strong style="color:var(--white2);font-weight:400;">INITIATE</strong> ~40 months before impact.</span>
+  <a href="https://app.orsiva.space/backtest" target="_blank" rel="noopener" class="vs-link">View backtest &#8599;</a>
+</div>
+
+<section class="section" id="problem">
+  <div class="container">
+    <div class="problem-layout">
+      <div>
+        <div class="section-tag scroll-reveal">The Challenge</div>
+        <h2 class="section-h scroll-reveal">End-of-life is a <em>decision</em>, not a checkbox</h2>
+        <p class="section-p scroll-reveal" style="margin-bottom:22px;">Operators have tracking and conjunction alerts. What they lack is a structured way to decide <em>when</em> a satellite should leave orbit — weighing remaining value against rising risk and a hard regulatory deadline.</p>
+        <p class="section-p scroll-reveal">It is an optimal-stopping problem with money on both sides: deorbit too early and you lose revenue; too late and you face breach, collision risk, liability and debris. And when nobody puts a price on waiting, the default is <em>delay</em>.</p>
+      </div>
+      <div class="scroll-reveal">
+        <div class="silo-stack">
+          <div class="silo-item"><span class="silo-num">I</span><div><div class="silo-title">Engineering</div><div class="silo-desc">Monitors fuel and subsystem health — but ignores economic value and regulatory timing constraints.</div></div></div>
+          <div class="silo-item"><span class="silo-num">II</span><div><div class="silo-title">Compliance</div><div class="silo-desc">Tracks static rules (25-year, now 5-year) without dynamic, stochastic risk — and the rules keep changing.</div></div></div>
+          <div class="silo-item"><span class="silo-num">III</span><div><div class="silo-title">Finance</div><div class="silo-desc">Models depreciation but lacks orbital context — and never prices what each month of delay costs.</div></div></div>
+        </div>
+        <div class="silo-footer">Result: disconnected silos, no unified model, unpriced delay — and compounding liability.</div>
+      </div>
+    </div>
+    <div class="problem-cta scroll-reveal">
+      <button class="btn-gold" onclick="showPage('demo')" style="border:none;cursor:pointer;">Request a demo <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Technical%20Brief%20Request&body=Name:%0AOrganisation:%0ARole:%0AWhat%20you%27d%20like%20to%20evaluate:%0A" class="btn-outline">Request Technical Brief</a>
+    </div>
+  </div>
+</section>
+
+<section class="section framework-section" id="how">
+  <div class="container">
+    <div class="framework-header scroll-reveal">
+      <div class="section-tag" style="justify-content:center;">How It Works</div>
+      <h2 class="section-h" style="text-align:center;">One question.<br>One <em>clear answer.</em></h2>
+      <p class="section-p" style="margin:0 auto;text-align:center;max-width:560px;">Point ORSIVA at a satellite. It scores the risk and the economics of the timing, and returns a verdict you can act on — and defend.</p>
+    </div>
+    <div class="verdict scroll-reveal">
+      <div class="verdict-score">
+        <div class="vs-num">72</div>
+        <div class="vs-of">/ 100</div>
+        <div class="vs-label">ORSIVA Score</div>
+        <div class="vs-asset">Sample asset · LEO</div>
+      </div>
+      <div class="verdict-rows">
+        <div class="verdict-row">
+          <div class="vr-key">Decision</div>
+          <div class="vr-val"><strong>Initiate disposal</strong><span>High risk · regulatory deadline approaching</span></div>
+        </div>
+        <div class="verdict-row">
+          <div class="vr-key">Economics</div>
+          <div class="vr-val"><strong>Act within ~1 month</strong><span>Value-at-risk $1.6M · delaying costs more than acting</span></div>
+        </div>
+        <div class="verdict-row">
+          <div class="vr-key">Cost of delay</div>
+          <div class="vr-val"><strong>~$90k / month deferred</strong><span>Every month of inaction increases expected liability — acting now costs less than waiting</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="score-scale scroll-reveal">
+      <div class="score-scale-track"><div class="score-scale-marker" data-val="72" style="left:72%;"></div></div>
+      <div class="score-scale-ends"><span>0 · <b>Continue</b> — safe to keep operating</span><span><b>Act now</b> · 100</span></div>
+      <div class="score-scale-note"><b>Read the score in one direction:</b> lower is safer, higher means act sooner. This sample sits at 72 — well inside the “act now” band.</div>
+    </div>
+    <p class="section-p scroll-reveal" style="margin:36px auto 0;text-align:center;max-width:560px;color:var(--white3);">Every verdict is logged and audit-ready for regulators, insurers and operators. ORSIVA recommends — the operator always decides.</p>
+  </div>
+</section>
+
+<section class="section" id="edge">
+  <div class="container">
+    <div class="manifesto scroll-reveal">
+      <div class="section-tag">Approach</div>
+      <h2 class="manifesto-h">The decision layer for a satellite's <em>final orbit.</em></h2>
+      <p class="manifesto-p">Tracking data, regulation and financial exposure become one scored recommendation — with the full working shown behind it.</p>
+    </div>
+    <div class="cap-grid scroll-reveal">
+      <div class="cap"><div class="cap-n">01</div><div class="cap-t">Decide</div><div class="cap-d">A scored, explainable recommendation on exactly when to act.</div></div>
+      <div class="cap"><div class="cap-n">02</div><div class="cap-t">Quantify</div><div class="cap-d">The economics of the timing — the optimal moment, and the value at stake.</div></div>
+      <div class="cap"><div class="cap-n">03</div><div class="cap-t">Act</div><div class="cap-d">A clear verdict with the cost of delay per month, so the decision is easy to make and easy to defend.</div></div>
+    </div>
+    <div class="trio scroll-reveal">
+      <div class="trio-cell"><div class="trio-k">The ORSIVA Score</div><div class="trio-v">A single <em>0–100 score</em> — lower is safer, banded from CONTINUE to ACT NOW.</div></div>
+      <div class="trio-cell"><div class="trio-k">Always current</div><div class="trio-v">FCC, ESA, IADC and UK rules as versioned data — AI flags changes, a human approves them.</div></div>
+      <div class="trio-cell"><div class="trio-k">Sustainable by design</div><div class="trio-v">Every verdict values a <em>cleaner orbit.</em></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="built">
+  <div class="container">
+    <div class="section-tag scroll-reveal">Built For</div>
+    <h2 class="section-h scroll-reveal" style="max-width:700px;margin-bottom:48px;">Decision intelligence the whole orbital economy can <em>trust.</em></h2>
+    <div class="audience-grid scroll-reveal">
+      <div class="aud-col"><div class="aud-for">For</div><div class="aud-title">Operators</div><div class="aud-items"><div class="aud-item">Mid-tier LEO fleets &amp; single high-value assets</div><div class="aud-item">Optimal end-of-life timing</div><div class="aud-item">Reduced liability exposure</div><div class="aud-item">Audit-ready decision trail</div></div></div>
+      <div class="aud-col"><div class="aud-for">For</div><div class="aud-title">Regulators</div><div class="aud-items"><div class="aud-item">Rule-cited, version-stamped verdicts</div><div class="aud-item">Standardised reporting</div><div class="aud-item">Machine-readable audit logs</div></div></div>
+      <div class="aud-col"><div class="aud-for">For</div><div class="aud-title">Insurers</div><div class="aud-items"><div class="aud-item">Fleet-level disposal-risk distributions</div><div class="aud-item">Orbital-physics inputs for pricing</div><div class="aud-item">No operator decision data shared</div></div></div>
+      <div class="aud-col"><div class="aud-for">For</div><div class="aud-title">Investors</div><div class="aud-items"><div class="aud-item">Sustainability infrastructure</div><div class="aud-item">ESG-aligned governance tooling</div><div class="aud-item">Regulatory-tailwind exposure</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roadmap" style="background:var(--black2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);">
+  <div class="container">
+    <div style="max-width:820px;margin:0 auto;">
+      <div class="scroll-reveal" style="text-align:center;margin-bottom:54px;">
+        <div class="section-tag" style="justify-content:center;">Development Roadmap</div>
+        <h2 class="section-h">What comes <em>next</em></h2>
+      </div>
+      <div class="roadmap-list scroll-reveal">
+        <div class="rm-step"><div class="rm-num active">I</div><div><div class="rm-title active">Built &amp; running</div><div class="rm-when"><span class="live-dot"></span>Live now</div><div class="rm-desc">The full decision engine, fleet risk matrix, orbital console and backtest mode are operational — risk and economics scored into the ORSIVA Score, plus an AI regulatory-intelligence engine. Operators can upload real mass, cross-section and fuel to sharpen Δv budgets and decay estimates.</div></div></div>
+        <div class="rm-step"><div class="rm-num">II</div><div><div class="rm-title">Live data &amp; first pilots</div><div class="rm-when future">In progress · Q4 2026</div><div class="rm-desc">Live ingestion from CelesTrak and Space-Track, and the first design-partner pilots — ORSIVA run on real fleets in shadow mode, alongside existing processes.</div></div></div>
+        <div class="rm-step"><div class="rm-num">III</div><div><div class="rm-title">Standardisation</div><div class="rm-when future">Ongoing</div><div class="rm-desc">Working with agencies and insurers toward standardised end-of-life reporting and a cross-operator coordination layer.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="join">
+  <div class="container">
+    <div style="max-width:760px;margin:0 auto;text-align:center;">
+      <div class="section-tag scroll-reveal" style="justify-content:center;">Work With Us</div>
+      <h2 class="section-h scroll-reveal" style="margin-bottom:20px;">Help us shape the <em>first version.</em></h2>
+      <p class="section-p scroll-reveal" style="margin:0 auto;max-width:680px;text-align:center;">We're choosing a small group of partners to test ORSIVA against real fleets, real regulation and real decisions. If end-of-life is a problem you live with — or a field you study — we want to build it with you.</p>
+    </div>
+    <div class="work-grid scroll-reveal">
+      <div class="work-card">
+        <div class="work-n">01</div>
+        <div class="work-t">Design &amp; Pilot Partners</div>
+        <div class="work-d">Operators who'll run ORSIVA against their own fleet and steer the roadmap. Early partners get direct influence over the product and preferential terms.</div>
+      </div>
+      <div class="work-card">
+        <div class="work-n">02</div>
+        <div class="work-t">Advisors &amp; Mentors</div>
+        <div class="work-d">Operators, regulators and decision-science experts willing to lend judgement and open doors — high-trust roles, recognised in equity.</div>
+      </div>
+      <div class="work-card">
+        <div class="work-n">03</div>
+        <div class="work-t">Regulators &amp; Insurers</div>
+        <div class="work-d">Bodies shaping end-of-life standards and pricing disposal risk — partner with us to shape ORSIVA's outputs so they are audit-ready and useful for pricing from the start.</div>
+      </div>
+    </div>
+    <div class="work-cta scroll-reveal">
+      <a href="mailto:contact@orsiva.space?subject=Working with ORSIVA" class="btn-gold" style="text-decoration:none;">Start a conversation <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="border-top:1px solid var(--bdr);">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-tag scroll-reveal" style="justify-content:center;">FAQ</div>
+      <h2 class="section-h scroll-reveal">Questions, answered <em>straight.</em></h2>
+    </div>
+    <div class="faq-list scroll-reveal">
+      <div class="faq-item"><div class="faq-q">Does ORSIVA control or command my satellite?</div><div class="faq-a">No. ORSIVA is advisory-only decision intelligence — it recommends when to act and shows the full working behind it. The operator always makes and executes the decision. It sits on top of your flight dynamics; it does not replace them.</div></div>
+      <div class="faq-item"><div class="faq-q">What data do you need to score a satellite?</div><div class="faq-a">A public catalogue entry (TLE) is enough to start. Operators can optionally add real mass, cross-section and fuel to sharpen &Delta;v budgets and decay estimates — the more you provide, the tighter the verdict.</div></div>
+      <div class="faq-item"><div class="faq-q">How is the ORSIVA Score calculated?</div><div class="faq-a">It combines disposal risk and the economics of timing into a single 0–100 score — lower is safer, higher means act sooner — with every input logged and auditable. The full method is set out in a technical brief, <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Technical%20Brief%20Request&body=Name:%0AOrganisation:%0ARole:%0A">available on request</a>.</div></div>
+      <div class="faq-item"><div class="faq-q">Is it aligned with regulation?</div><div class="faq-a">ORSIVA encodes the frameworks that govern end-of-life — the FCC 5-year rule, IADC guidelines, ESA debris-mitigation requirements and UK licensing conditions — as versioned rules. Changes are flagged by AI and approved by a human, and every verdict cites the rule and version it used. That supports your compliance planning; it is not a legal determination, which stays with you and your regulator.</div></div>
+      <div class="faq-item"><div class="faq-q">What stage is ORSIVA at — can I pilot it?</div><div class="faq-a">The decision engine, fleet risk matrix, orbital console and backtest are live in preview now. We're selecting a small group of design-partner operators to run ORSIVA against real fleets in shadow mode. If that's you, <a href="mailto:contact@orsiva.space?subject=ORSIVA design-partner pilot">start a conversation</a>.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip" id="contact">
+  <div class="container">
+    <div class="section-tag scroll-reveal" style="justify-content:center;margin-bottom:22px;">Contact</div>
+    <h2 class="section-h scroll-reveal" style="margin-bottom:16px;">Ready to make the <em>right call</em> on orbit?</h2>
+    <p style="font-size:18px;font-weight:400;color:var(--white2);margin-bottom:52px;" class="scroll-reveal">We work with operators, regulators and insurers. If you run a mid-tier LEO fleet or a single high-value asset, we want to hear from you.</p>
+    <div class="cta-contacts scroll-reveal">
+      <a href="mailto:contact@orsiva.space" class="cta-contact-item"><div class="cca-label">Email</div><div class="cca-val">contact@orsiva.space</div></a>
+      <a href="https://orsiva.space" target="_blank" rel="noopener" class="cta-contact-item"><div class="cca-label">Web</div><div class="cca-val">orsiva.space</div></a>
+      <!-- BOOKING LINK: replace the href below with your Calendly / cal.com link, then delete this comment. Until then it points to a placeholder. -->
+      <a href="https://calendly.com/orsiva/intro-REPLACE-ME" target="_blank" rel="noopener" class="cta-contact-item"><div class="cca-label">Schedule a Call</div><div class="cca-val">Book a 30-min slot &#8599;</div></a>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="scroll-reveal">
+      <button class="btn-gold" onclick="showPage('demo')">Request a Demo <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Technical%20Brief%20Request&body=Name:%0AOrganisation:%0ARole:%0AWhat%20you%27d%20like%20to%20evaluate:%0A" class="btn-outline">Request Technical Brief</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><svg class="wm wm-footer" viewBox="0 0 2231 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ORSIVA"><title>ORSIVA</title><path fill="currentColor" fill-rule="evenodd" d="M1293.8 201.5 1293 202.2 1293 502.5 1293.5 503.2 1355.2 503.2 1355.8 502.8 1355.8 202.2 1355 201.5ZM1985.8 74.8 1985 75.5 1864 498.8 1863.2 502.8 1863.8 503.2 1930.5 503.2 1931.5 502.5 1958.8 404.0 1960.2 402.2 2126.5 402.2 2128 403.8 2155.2 502.2 2156.2 503.2 2222.5 503.2 2223 501.8 2101.5 75.0ZM2039.5 115.5 2047.5 115.5 2049 117.2 2110 337.2 2110.5 340.5 2109.2 341.2 1977.5 341.2 1976.2 340.5 2038 116.8ZM1450.2 75.0 1451 79.2 1569 502.5 1569.8 503.2 1683.2 503.2 1684.5 500.8 1799.8 85.0 1801.8 77.8 1802 75.0 1734.5 74.8 1733.8 75.8 1630.8 461.0 1629 462.0 1623 461.8 1621.8 460.0 1518.8 76.0 1517.5 74.8ZM463.8 75.0 463.2 76.2 463.2 501.5 463.8 503.0 528.5 503.2 529.2 502.5 529.2 335.8 530 334.5 664 334.2 670.5 335.0 676.8 336.8 679.8 338.0 684.8 341.2 688.2 344.8 691.5 349.5 693.8 354.5 695.8 362.2 696.2 368.8 696.5 503.0 762.2 503.2 762.8 502.5 762.8 356.5 760.8 342.2 757.8 333.5 754.5 327.2 749.2 320.5 743.8 315.5 737.8 311.5 732.8 309.0 723.5 306.0 712.5 304.5 711.2 303.2 711.2 295.5 712.2 294.0 725 288.5 737 281.0 747.8 272.0 757 262.0 761.8 255.8 766.5 247.8 769.8 240.8 773.5 229.5 776.5 214.0 777.5 201.2 777.5 185.8 776.5 171.8 774.5 160.8 770.5 147.2 765.5 136.0 759.2 125.8 751 115.2 744 108.2 734.2 100.2 726.2 95.0 715 89.0 703.5 84.2 689.8 80.0 676.8 77.2 660.8 75.2 651.2 74.8ZM529.5 135.2 530.5 134.5 646.5 134.8 655 135.8 664.2 137.8 674.2 141.2 682 145.2 691 152.0 699.2 161.2 702.8 166.8 706 173.5 708 179.2 709.8 186.8 711 198.5 711 210.2 710 220.5 707 232.5 705 237.5 701.5 244.0 696 251.5 690.2 257.2 683 262.8 671 268.8 656.8 272.8 647.8 274.0 636 274.5 530.2 274.2 529.2 273.0ZM999.8 67.0 983.2 69.2 969.2 72.2 953.2 77.2 940 83.0 929.8 88.5 914.8 99.0 903.2 109.8 895.5 119.0 889 128.8 883.2 140.2 879 152.2 876 166.0 874.8 177.5 874.8 197.0 877 214.8 880.2 227.0 883.2 234.8 887 242.2 891.5 249.2 899.8 259.5 911.5 270.5 923.5 279.0 931.2 283.5 952.5 293.2 979 302.8 999 308.5 1042.8 319.0 1072.8 328.0 1089.5 334.8 1101.5 342.0 1105.5 345.2 1114.2 354.8 1118 361.2 1121 369.8 1122.5 379.0 1122.5 390.5 1121 400.5 1117.8 410.5 1115.8 414.8 1111.2 422.0 1107.2 427.0 1101.2 433.0 1092.2 439.8 1082.2 445.0 1068.2 449.8 1052.2 452.8 1035.5 454.0 1019.8 453.8 1009.5 452.8 999.2 451.0 988 448.0 980 445.0 971.2 440.8 962.5 435.2 954.8 429.0 948.5 422.5 940.8 411.2 936.8 402.8 933.8 394.0 930.8 378.5 930 368.8 930 348.8 929.2 348.0 865 348.2 864.8 370.0 866.2 388.8 869 403.8 873.5 419.0 876.8 427.2 881.5 437.0 888 447.8 898.2 461.0 907.8 470.8 918.2 479.5 930.2 487.5 946.2 495.8 961.8 501.8 979.8 506.8 994.8 509.5 1018 511.8 1042 511.8 1064.2 509.8 1077.2 507.5 1095.8 502.8 1110 497.5 1123 491.2 1136.2 483.2 1146.5 475.5 1157.2 465.2 1166.5 454.0 1173.5 443.0 1179.8 429.8 1183.8 417.8 1186.8 403.0 1188 387.0 1187.5 370.0 1184.8 353.0 1181.5 342.2 1178.8 335.5 1173 325.0 1165.5 315.0 1160.5 309.5 1154.2 303.5 1146.2 297.0 1138.2 291.5 1127.5 285.2 1105 275.2 1078 266.0 1052.8 259.2 1009 249.0 986.5 242.0 975 237.2 962.2 230.0 955.5 224.5 949.8 218.2 945 210.8 942 203.0 940 192.0 939.8 182.2 940.8 173.5 943 165.0 946.8 156.8 952 149.2 958.5 142.8 965.2 137.8 971.8 134.0 978.5 131.0 987.8 128.0 1006 124.8 1027.5 124.0 1039.2 124.8 1048.5 126.0 1057.8 128.0 1066.8 130.8 1078.5 136.0 1088.5 142.8 1097.5 151.8 1104 161.2 1108.8 172.2 1111.8 185.2 1113 201.8 1113 223.5 1114 224.0 1177.8 223.8 1178.2 222.8 1178.2 201.0 1177.8 187.5 1176.5 176.5 1173.8 162.5 1170.2 151.0 1166.8 142.2 1159.8 129.2 1148.8 114.5 1139.5 105.0 1131.5 98.2 1119.5 90.0 1108.5 84.0 1094.5 78.0 1079.8 73.2 1066.2 70.0 1054 68.0 1034.8 66.2 1019.2 66.0ZM166.2 66.2 146.2 68.0 123.5 72.2 105 78.0 93 83.0 85 87.0 70.8 95.8 62.8 101.8 53.5 109.8 47 116.2 40 124.5 34.5 132.0 28.2 142.0 21 156.8 15 173.2 11 189.0 8 207.2 7 217.5 6.2 235.0 6.5 351.2 8 370.8 11 389.0 15 404.8 21 421.2 28.2 436.0 36.2 448.5 45.5 460.0 58.5 472.8 71.5 482.8 86 491.5 98.8 497.5 116.2 503.8 132.5 507.8 150.5 510.5 166.8 511.8 190 511.8 212.2 509.8 234 505.5 252.5 499.8 263.8 495.0 272.8 490.5 290 479.5 303 468.8 315.8 455.2 323.5 444.8 329.5 435.0 336.8 420.0 342.5 404.0 346.5 388.0 349.5 369.2 351 345.8 350.8 224.0 349.5 208.8 346.8 191.0 342.5 174.0 336.2 156.8 329.2 142.5 320.8 129.2 310.8 117.0 298.2 105.0 285.5 95.2 270.5 86.2 254.5 79.0 239.8 74.0 223 70.0 204 67.2 182.5 66.0ZM173.5 125.2 183.5 125.2 194.8 126.0 206.2 127.8 215.8 130.0 224.5 133.0 236.5 138.8 244.2 143.8 250.8 149.0 258.2 156.5 265 165.0 271 174.8 275.8 185.0 279.8 197.0 282 206.8 283.8 219.0 284.5 231.0 284.5 346.8 284 356.5 282 371.2 279.8 381.0 275.8 393.0 273 399.2 267 410.0 258 421.8 249 430.5 237.2 438.8 225 444.8 212.8 448.8 196.8 451.8 183.2 452.8 173.8 452.8 160.2 451.8 149.8 450.0 138.8 447.0 128.5 443.0 120.2 438.8 112 433.2 104.5 427.0 97.8 420.0 91.5 412.0 85 401.2 81 392.5 77.8 383.2 74.8 371.0 73 359.0 72.2 347.5 72.2 230.5 72.8 221.5 74 211.2 77 197.2 83 180.8 90.8 167.0 97.8 158.0 107 148.8 119 140.0 131.2 133.8 145.5 129.0 156.5 126.8ZM1351.2 10.5 1350.2 10.5 1349.5 11.2 1339 44.0 1338.2 45.0 1328.2 42.0 1323.2 42.0 1320 43.0 1316 45.2 1312 49.8 1305.8 68.8 1305 69.5 1301.8 69.0 1288 64.2 1286.8 64.2 1284.2 70.5 1284.2 71.5 1285.2 72.5 1300 77.0 1302.2 78.2 1302.2 79.5 1296 98.8 1296 102.8 1297.2 107.0 1300.2 111.2 1305.8 114.8 1334.2 123.8 1337.2 123.8 1341.8 122.5 1345.5 120.2 1348.2 117.5 1350.8 112.8 1355.8 96.8 1356.5 95.8 1374.2 101.2 1375.8 99.5 1377.2 94.5 1376.2 93.0 1360.2 88.0 1359.2 87.2 1359.8 84.2 1365.2 67.5 1365.5 63.5 1364.8 60.0 1362.2 55.5 1360 53.2 1356.8 51.2 1348.8 48.8 1346.8 47.2 1357.5 14.5 1357.2 12.5Z"/><path fill="#E3A72F" d="M1384.2 77.2 1382 80.2 1377 97.0 1371 114.0 1370.5 118.0 1371.5 120.5 1373.8 122.5 1435 142.5 1438.2 142.8 1441 141.5 1443.5 137.8 1454.5 103.8 1454.8 100.5 1453.5 98.0 1451.8 96.5 1448.8 95.2 1389.2 76.0 1387 76.0ZM1220.5 24.0 1218.2 26.8 1207 61.2 1206.8 65.2 1208 67.8 1210.5 69.5 1272 89.5 1274.5 89.5 1276.8 88.5 1278.8 86.5 1279.8 84.2 1284 69.8 1290.8 50.2 1290.8 46.8 1289.5 44.5 1286.2 42.5 1226.2 23.0 1222.2 23.0Z"/></svg></div>
+  <div class="footer-links">
+    <a href="#" onclick="goTo('problem');return false;">Problem</a>
+    <a href="#" onclick="goTo('how');return false;">How It Works</a>
+    <a href="#" onclick="goTo('edge');return false;">Approach</a>
+    <a href="#" onclick="goTo('roadmap');return false;">Roadmap</a>
+    <a href="#" onclick="goTo('join');return false;">Work With Us</a>
+    <a href="#" onclick="goTo('faq');return false;">FAQ</a>
+    <a href="#" onclick="goTo('contact');return false;">Contact</a>
+    <a href="#" onclick="showPage('privacy');return false;">Privacy</a>
+  </div>
+  <div class="footer-note"><strong class="footer-advisory">Advisory only — all outputs are recommendations; the operator retains authority.</strong><br>© 2026 ORSIVA Limited · Registered in England and Wales · Company No. 17288131<!--REGOFFICE--></div>
+</footer>
+</div><!-- /main-page -->
+
+<div id="demo-page" class="page">
+  <div id="demo-page-outer" class="subpage-outer">
+    <div class="demo-inner">
+      <button class="demo-back" onclick="showPage('main')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to ORSIVA</button>
+      <div class="demo-tag">Request a Demo</div>
+      <h1 class="demo-title">See ORSIVA<br><em>in action.</em></h1>
+      <p class="demo-sub">Send us a short email — tell us about your fleet, orbital regime, and what you&rsquo;d like to see. We&rsquo;ll prepare a tailored demonstration of ORSIVA applied to your satellites, and send you a password for the live console so you can explore it yourself — load the demo fleet, run the ORSIVA Score, and inspect the loss model and &Delta;v budgets.</p>
+      <div class="demo-rule"></div>
+
+      <!-- Single CTA: request a demo (covers the guided demo + console access) -->
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+        <a href="mailto:contact@orsiva.space?subject=ORSIVA Demo Request&body=Name:%0AOrganisation:%0ARole:%0AFleet size and orbital regime:%0A%0AWhat brings you to ORSIVA (current process, compliance challenges, what you'd like to see):" class="btn-gold" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;">
+          Request a demo
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:contact@orsiva.space?subject=ORSIVA%20Technical%20Brief%20Request&body=Name:%0AOrganisation:%0ARole:%0AWhat%20you%27d%20like%20to%20evaluate:%0A" class="btn-outline" style="text-decoration:none;">Request Technical Brief</a>
+      </div>
+
+      <div style="margin-top:52px;padding:20px 24px;border:1px solid var(--bdr);border-left:2px solid var(--goldbdr);background:rgba(227,167,47,0.03);">
+        <div class="mini-label">Contact</div>
+        <div style="font-size:16px;font-weight:400;color:var(--white2);line-height:1.7;">
+          <a href="mailto:contact@orsiva.space" style="color:var(--gold2);text-decoration:none;">contact@orsiva.space</a> · We respond within one business day.
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /demo-page -->
+
+
+<div id="privacy-page" class="page">
+  <div class="subpage-outer">
+    <div class="demo-inner">
+      <button class="demo-back" onclick="showPage('main')">&larr; Back to ORSIVA</button>
+      <div class="demo-tag">Privacy</div>
+      <h1 class="demo-title">Privacy notice</h1>
+      <div class="privacy-body">
+        <p>This website is operated by ORSIVA Limited, registered in England and Wales (Company No. 17288131).<!--REGOFFICE-P--> We are the controller of personal data you send us.</p>
+        <h3>What we collect</h3>
+        <p>This site sets no cookies and runs no analytics or tracking. We only receive personal data you choose to send us — for example your name, organisation and message when you email <a href="mailto:contact@orsiva.space">contact@orsiva.space</a> or book a call.</p>
+        <h3>Why, and on what basis</h3>
+        <p>We use it to reply to you, arrange demos and discuss pilots. Our lawful basis is legitimate interests (responding to your enquiry) or steps taken at your request before entering a contract. We do not sell your data or use it for advertising.</p>
+        <h3>Third parties</h3>
+        <p>Web fonts are loaded from Google Fonts, which means your browser connects to Google servers and shares your IP address with Google. Emails are handled by our email provider. Scheduling links are provided by the booking service named on the link.</p>
+        <h3>How long we keep it</h3>
+        <p>We keep enquiry correspondence for up to 24 months after our last contact, unless we enter a contract with you, in which case contract records are kept as the law requires.</p>
+        <h3>Your rights</h3>
+        <p>You can ask for access to, correction or deletion of your data, or object to its use, by emailing <a href="mailto:contact@orsiva.space">contact@orsiva.space</a>. You can also complain to the UK Information Commissioner's Office (ico.org.uk).</p>
+        <p class="privacy-date">Last updated: September 2026</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-/* ===== NAVIS v2.0 decision logic (compact JS port) ===== */
-const WIN={FCC:5,IADC:25,ESA:5};
-const DECAY=[[300,.2],[400,1],[450,2.5],[500,7],[550,18],[600,35],[650,70],[700,130],[800,350],[1000,2000],[1336,10000]];
-function decayYears(a){if(a<=300)return .2;if(a>=1336)return 1e5;for(let i=0;i<DECAY.length-1;i++){const[a0,y0]=DECAY[i],[a1,y1]=DECAY[i+1];if(a>=a0&&a<=a1){const f=(a-a0)/(a1-a0);return +(y0+f*(y1-y0)).toFixed(1);}}return 1e5;}
-function probOf(s,dy){let p;if(s.strat==='PASSIVE_DECAY'){p=.97;if(dy>5)p-=Math.min(.8,.08*(dy-5));if(s.batt<50)p-=.10;}else if(s.strat==='SAIL'){p=.88;if(s.batt<70)p-=.20;}else{p=.92;if(s.fuel<30)p-=(.10+.30*(1-Math.max(0,s.fuel)/30));if(s.batt<70)p-=(.08+.20*(1-s.batt/70));if(s.age>1825)p-=.10;if(s.cam>15)p-=.10;}return Math.max(0,Math.min(.99,+p.toFixed(2)));}
-function jurPass(s,dy,j){const w=WIN[j];if(s.strat!=='BURN'){return dy<=w&&s.batt>=50;}const overdue=s.age>(s.dl+w*365);return s.fuel>=30&&s.batt>=70&&!overdue;}
-function pcOf(s){const base=s.alt<500?1.8e-4:s.alt<700?7e-5:3e-5;const m=s.cong==='HIGH'?1.4:s.cong==='MEDIUM'?1.15:1;return base*m*(1+s.cam/60);}
-function decide(s){const dy=decayYears(s.alt),p=probOf(s,dy),pc=pcOf(s);
-  const jur={FCC:jurPass(s,dy,'FCC'),IADC:jurPass(s,dy,'IADC'),ESA:jurPass(s,dy,'ESA')};const comp=(jur.FCC&&jur.ESA)?'PASS':'FAIL';
-  const total=(1-p)*0.30*s.value+pc*s.value*1.5,ratio=total/s.value;let sc=0;const fac=[];
-  const fp=p<.3?3:p<.5?2:p<.75?1:0;sc+=fp;fac.push(['Disposal forecast',fp,p.toFixed(2)]);
-  const cp=comp==='FAIL'?2:0;sc+=cp;fac.push(['Compliance',cp,comp]);
-  const kp=pc>.01?3:pc>.001?2:0;sc+=kp;fac.push(['Collision risk',kp,pc.toExponential(1)]);
-  const ep=ratio>.1?2:ratio>.03?1:0;sc+=ep;fac.push(['Economic exposure',ep,(ratio*100).toFixed(1)+'%']);
-  let eo=0;if(comp==='FAIL'&&p<.5)eo=2;else if(comp==='FAIL'||p<.6)eo=1;sc+=eo;fac.push(['EoL readiness',eo,eo?('+'+eo):'ready']);
-  let dec=sc>=7?'INITIATE':sc>=4?'PREPARE':sc>=2?'ESCALATE':'CONTINUE';if(dec==='ESCALATE'&&p>=.75&&comp==='PASS')dec='CONTINUE';
-  const tier=p>=.8&&comp==='PASS'?'READY':p>=.6?'MONITOR':p>=.4?'AT_RISK':'CRITICAL';
-  const conf=+Math.max(.45,Math.min(.97,.55+Math.abs(sc-6)/14+(comp==='PASS'?.1:0))).toFixed(2);
-  const days=s.strat!=='BURN'?Math.round((5-dy)*365):Math.round(s.dl+5*365-s.age);
-  const band=sc>=7?'HIGH':sc>=4?'MEDIUM':'LOW';
-  return {dy,p,pc,jur,comp,total,ratio,score:sc,fac,dec,tier,conf,days,band,p10:total*.42,p50:total,p90:total*2.3,urg:sc*0.7+ratio*3+(dec==='INITIATE'?3:dec==='PREPARE'?1.5:0)};}
-function rng(s){let x=s||1;return()=>{x=(x*1103515245+12345)&0x7fffffff;return x/0x7fffffff;};}
-function congFor(a){return(a>=350&&a<600)?'HIGH':(a>=600&&a<900)?'MEDIUM':'LOW';}
-function mk(id,alt,strat,fuel,batt,value,cong,age,cam,fleet,dl){return{id,alt,strat,fuel,batt,value,cong,age,cam,fleet,dl};}
-function gen(name,n,strat,aLo,aHi,vLo,vHi,fLo,fHi,bLo,bHi,dl,ageMax,seed){const r=rng(seed),o=[];for(let i=0;i<n;i++){const a=+(aLo+r()*(aHi-aLo)).toFixed(0);o.push(mk(`${name}-${String(i+1).padStart(3,'0')}`,a,strat,+(fLo+r()*(fHi-fLo)).toFixed(0),+(bLo+r()*(bHi-bLo)).toFixed(0),Math.round((vLo+r()*(vHi-vLo))/1e3)*1e3,congFor(a),Math.floor(120+r()*(ageMax-120)),Math.floor(r()*20),name,dl));}return o;}
-const NAMED=[mk('Planet-Dove-4E-1',475,'PASSIVE_DECAY',0,65,250000,'HIGH',1500,3,'Named',1095),mk('OneWeb-0012',1200,'BURN',6,72,1000000,'MEDIUM',2650,12,'Named',2555),mk('Sentinel-6A',1336,'BURN',38,88,200000000,'LOW',2030,6,'Named',2007),mk('Iridium-NEXT-123',780,'BURN',18,78,40000000,'MEDIUM',3400,22,'Named',3650)];
-let ALL=[];
-function buildFleet(total){const nH=Math.round(total*.6),nA=total-nH;
-  ALL=[...NAMED,
-    ...gen('Helios-EO',nH,'PASSIVE_DECAY',452,496,250000,400000,0,0,60,100,1825,1825,7),
-    ...gen('Aether-Comms',nA,'BURN',1050,1180,1500000,2500000,20,90,68,100,2920,2600,29)];
-  ALL.forEach(s=>{s.r=decide(s);s.node=Math.random()*6.283;s.incl=(Math.random()-.5)*2.6;s.ph=Math.random()*6.283;s.spd=0.0009+(1336-s.alt)/1336*0.0016;});}
-buildFleet(600);
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id + '-page').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+function goTo(id) {
+  showPage('main');
+  setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+  return false;
+}
+const nav = document.getElementById('nav');
+function updateNav(){ nav.classList.toggle('scrolled', window.scrollY > 40); nav.classList.toggle('nav-hidden', window.scrollY < window.innerHeight * 0.6); }
+window.addEventListener('scroll', updateNav, { passive: true });
+window.addEventListener('resize', updateNav, { passive: true });
+updateNav();
+function scrollToHero(){ const el = document.getElementById('hero'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); ro.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.scroll-reveal').forEach(el => ro.observe(el));
+function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
 
-const DCOL={CONTINUE:'#36c08a',PREPARE:'#e0a23a',ESCALATE:'#a78bfa',INITIATE:'#e85563'};
-const SCOL={PASSIVE_DECAY:'#3f6fdc',BURN:'#9a8bff',SAIL:'#e0a23a'};
-const GCOL={HIGH:'#e85563',MEDIUM:'#e0a23a',LOW:'#36c08a'};
-const SHELL=a=>a<500?'#e8794f':a<700?'#e0a23a':a<1000?'#a78bfa':'#9a8bff';
-let LAYER='decision',FLEET='All',SEL=null,CLUSTER=true,VIEW='overview';
-function colorOf(s){if(LAYER==='decision')return DCOL[s.r.dec];if(LAYER==='strategy')return SCOL[s.strat];if(LAYER==='congestion')return GCOL[s.cong];if(LAYER==='compliance')return s.r.jur.FCC?'#36c08a':(s.r.jur.IADC?'#e0a23a':'#e85563');if(LAYER==='insurance')return s.r.band==='HIGH'?'#e85563':s.r.band==='MEDIUM'?'#e0a23a':'#36c08a';return SHELL(s.alt);}
-const LEGENDS={decision:[['Continue','#36c08a'],['Escalate','#a78bfa'],['Prepare','#e0a23a'],['Initiate','#e85563']],strategy:[['Passive','#3f6fdc'],['Burn','#9a8bff']],congestion:[['High','#e85563'],['Medium','#e0a23a'],['Low','#36c08a']],compliance:[['Meets 5-yr (FCC/ESA)','#36c08a'],['Meets 25-yr only (IADC)','#e0a23a'],['Fails all','#e85563']],insurance:[['High band','#e85563'],['Medium','#e0a23a'],['Low','#36c08a']],shell:[['<500km','#e8794f'],['500-700','#e0a23a'],['700-1000','#a78bfa'],['>1000','#9a8bff']]};
-const visible=()=>FLEET==='All'?ALL:ALL.filter(s=>s.fleet===FLEET);
-const isRisk=s=>s.r.dec!=='CONTINUE';
-const fmt=n=>n>=1e9?'$'+(n/1e9).toFixed(2)+'B':n>=1e6?'$'+(n/1e6).toFixed(2)+'M':n>=1e3?'$'+(n/1e3).toFixed(0)+'k':'$'+Math.round(n);
-
-/* ===== icon rail ===== */
-const SVG={overview:'<path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/>',fleet:'<circle cx="12" cy="12" r="2.6"/><ellipse cx="12" cy="12" rx="9.2" ry="3.6" transform="rotate(45 12 12)"/>',congestion:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',compliance:'<path d="M12 3l7 3v5c0 4.2-3 7.3-7 9-4-1.7-7-4.8-7-9V6z"/><path d="M9 12l2 2 4-4.5"/>',insurance:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7v10"/><path d="M14.5 9.3c-.6-.8-1.6-1.1-2.6-1.1-1.4 0-2.6.7-2.6 1.9 0 2.6 5.3 1.3 5.3 3.9 0 1.2-1.2 1.9-2.7 1.9-1.1 0-2.1-.4-2.7-1.2"/>',audit:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/><circle cx="12" cy="15.5" r="1.3" fill="currentColor"/>'};
-const VIEWS=[['overview','Overview','decision','which satellites need a decision'],['fleet','Fleet','strategy','your constellations, by disposal strategy'],['congestion','Congestion','congestion','how crowded each orbit is'],['compliance','Compliance','compliance','who is legal (FCC · ESA · IADC)'],['insurance','Insurance','insurance','expected loss exposure per asset'],['audit','Audit','decision','every decision in a tamper-proof ledger']];
-const rail=document.getElementById('rail');
-VIEWS.forEach(([key,label,layer,purpose],i)=>{const e=document.createElement('div');e.className='ic'+(i===0?' on':'');e.innerHTML=`<svg viewBox="0 0 24 24">${SVG[key]}</svg><span class="lbl">${label}</span>`;
-  e.onclick=()=>{LAYER=layer;VIEW=key;document.querySelectorAll('.ic').forEach(x=>x.classList.toggle('on',x===e));document.getElementById('purposeTxt').innerHTML='<b>'+label+'</b> &middot; '+purpose;drawLegend();updateColors();renderQueue();if(key==='audit')showToast('Ledger verified ✓ '+(ALL.length)+' decisions · chain valid');};
-  rail.appendChild(e);if(i===2||i===4){const dv=document.createElement('div');dv.className='div';rail.appendChild(dv);}});
-function showToast(t){const el=document.getElementById('toast');el.textContent=t;el.style.display='block';clearTimeout(el._t);el._t=setTimeout(()=>el.style.display='none',2600);}
-document.getElementById('purposeTxt').innerHTML='<b>Overview</b> &middot; which satellites need a decision';
-function setFleetPills(list){const c=document.getElementById('fleetsel');c.innerHTML='';FLEET='All';list.forEach((f,i)=>{const e=document.createElement('span');e.className='pill'+(i===0?' on':'');e.textContent=f;e.onclick=()=>{FLEET=f;document.querySelectorAll('#fleetsel .pill').forEach(x=>x.classList.toggle('on',x===e));SEL=null;closeDossier();rebuild();refresh();};c.appendChild(e);});}
-setFleetPills(['All','Helios-EO','Aether-Comms','Named']);
-function drawLegend(){document.getElementById('legend').innerHTML=(LEGENDS[LAYER]||[]).map(([l,c])=>`<span><i style="background:${c}"></i>${l}</span>`).join('');}
-drawLegend();
-const sizeEl=document.getElementById('size');sizeEl.oninput=()=>{document.getElementById('szOut').textContent=sizeEl.value;buildFleet(+sizeEl.value);SEL=null;closeDossier();rebuild();refresh();};
-const ctog=document.getElementById('clusterTog');ctog.onclick=()=>{CLUSTER=!CLUSTER;ctog.classList.toggle('on',CLUSTER);rebuild();};
-
-/* ===== LIVE DATA (CelesTrak — real satellites, public, no login) ===== */
-const GROUPS=[['planet','Planet','PASSIVE_DECAY',1095,250000,2000000],['spire','Spire','PASSIVE_DECAY',1095,300000,800000],['oneweb','OneWeb','BURN',2555,800000,1200000],['iridium-NEXT','Iridium','BURN',3650,30000000,45000000],['starlink','Starlink','BURN',1825,400000,700000]];
-let SELGROUPS=['planet','oneweb','iridium-NEXT','spire'];
-const MU=398600.4418;
-function altFromMM(mm){const T=86400/mm;return Math.cbrt(MU*Math.pow(T/(2*Math.PI),2))-6371;}
-function hstr(s){let h=0;s=String(s);for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))&0x7fffffff;return h;}
-function mapLive(rec,meta){const strat=meta[2],dl=meta[3],vLo=meta[4],vHi=meta[5];const alt=Math.round(altFromMM(rec.MEAN_MOTION));
-  const h=hstr(rec.NORAD_CAT_ID||rec.OBJECT_NAME),rr=(h%1000)/1000;
-  return {id:rec.OBJECT_NAME||('NORAD '+rec.NORAD_CAT_ID),norad:rec.NORAD_CAT_ID,alt,strat,
-    fuel:strat==='BURN'?Math.round(15+(h%70)):0, batt:Math.round(60+(h%35)),
-    value:Math.round((vLo+rr*(vHi-vLo))/1e3)*1e3, cong:congFor(alt), age:Math.round(400+(h%(dl+1200))),
-    cam:strat==='BURN'?(h%20):(h%6), fleet:meta[1], dl,
-    node:(rec.RA_OF_ASC_NODE||0)*Math.PI/180, incl:(rec.INCLINATION||50)*Math.PI/180,
-    ph:(rec.MEAN_ANOMALY||rr*360)*Math.PI/180, spd:0.0009+(1336-Math.min(alt,1336))/1336*0.0016};}
-async function fetchLive(){
-  showToast('Fetching real satellites from CelesTrak…');
-  const caps={planet:220,spire:140,'iridium-NEXT':90,oneweb:320,starlink:300};let out=[];
-  for(const meta of GROUPS){if(!SELGROUPS.includes(meta[0]))continue;
-    try{const res=await fetch(`https://celestrak.org/NORAD/elements/gp.php?GROUP=${meta[0]}&FORMAT=json`);if(!res.ok)throw 0;
-      let arr=await res.json();let m=arr.map(r=>mapLive(r,meta)).filter(s=>s.alt>200&&s.alt<2000&&isFinite(s.alt));
-      out=out.concat(m.slice(0,caps[meta[0]]||200));}catch(e){}}
-  if(!out.length){showToast('Live fetch blocked or offline — staying synthetic');return;}
-  out.forEach(s=>s.r=decide(s));ALL=out;
-  setFleetPills(['All',...[...new Set(out.map(s=>s.fleet))]]);
-  document.getElementById('srcBadge').innerHTML='<span class="pd" style="background:#36c08a"></span>LIVE · CelesTrak';
-  SEL=null;closeDossier();rebuild();refresh();
-  showToast('Loaded '+out.length+' real satellites · orbits real, health estimated');}
-document.querySelectorAll('#srcsel .pill').forEach(p=>p.onclick=()=>{document.querySelectorAll('#srcsel .pill').forEach(x=>x.classList.toggle('on',x===p));
-  const live=p.dataset.src==='live';document.getElementById('groupsWrap').style.display=live?'block':'none';
-  if(live){fetchLive();}else{buildFleet(+sizeEl.value);setFleetPills(['All','Helios-EO','Aether-Comms','Named']);document.getElementById('srcBadge').innerHTML='<span class="pd"></span>demo · synthetic';SEL=null;closeDossier();rebuild();refresh();}});
-GROUPS.forEach(meta=>{const e=document.createElement('span');e.className='pill'+(SELGROUPS.includes(meta[0])?' on':'');e.textContent=meta[1];e.onclick=()=>{const k=meta[0];if(SELGROUPS.includes(k))SELGROUPS=SELGROUPS.filter(x=>x!==k);else SELGROUPS.push(k);e.classList.toggle('on');fetchLive();};document.getElementById('groupsel').appendChild(e);});
-
-/* ===== THREE.js scene ===== */
-let W=innerWidth,H=innerHeight;
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(42,W/H,0.1,4000);camera.position.set(0,70,230);
-const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('sky'),antialias:true,alpha:true});
-renderer.setSize(W,H);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-scene.add(new THREE.AmbientLight(0x8fa6cc,0.7));
-const sun=new THREE.DirectionalLight(0xffffff,1.15);sun.position.set(180,90,160);scene.add(sun);
-const ER=64;
-const earth=new THREE.Mesh(new THREE.SphereGeometry(ER,64,64),new THREE.MeshPhongMaterial({color:0x16335f,shininess:12,specular:0x224466}));
-scene.add(earth);
-const tl=new THREE.TextureLoader();tl.crossOrigin='anonymous';
-tl.load('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg',
-  tx=>{earth.material.map=tx;earth.material.color.set(0xffffff);earth.material.needsUpdate=true;document.getElementById('loading').style.display='none';},
-  undefined,
-  ()=>{document.getElementById('loading').textContent='(using stylised globe — texture offline)';setTimeout(()=>document.getElementById('loading').style.display='none',1800);});
-tl.load('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png',tx=>{earth.material.bumpMap=tx;earth.material.bumpScale=0.6;earth.material.needsUpdate=true;},undefined,()=>{});
-const atmo=new THREE.Mesh(new THREE.SphereGeometry(ER*1.045,48,48),new THREE.MeshBasicMaterial({color:0x3f6fdc,transparent:true,opacity:0.09,side:THREE.BackSide}));scene.add(atmo);
-// (background stars removed per preference)
-// orbit rings (faint)
-[480,650,900,1200].forEach(a=>{const r=altToR(a);const c=new THREE.Mesh(new THREE.RingGeometry(r-0.2,r+0.2,96),new THREE.MeshBasicMaterial({color:0x4a6aa0,transparent:true,opacity:.10,side:THREE.DoubleSide}));c.rotation.x=Math.PI/2;scene.add(c);});
-// selection ring
-const selRing=new THREE.Mesh(new THREE.TorusGeometry(3.4,0.35,8,28),new THREE.MeshBasicMaterial({color:0xffffff}));selRing.visible=false;scene.add(selRing);
-const controls=new THREE.OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.06;controls.minDistance=95;controls.maxDistance=600;controls.autoRotate=true;controls.autoRotateSpeed=0.28;controls.enablePan=false;
-
-function altToR(a){return ER+(Math.min(a,1400)/1400)*ER*1.7;}
-function pos3(s,out){const aR=altToR(s.alt);let x=aR*Math.cos(s.ph),y=0,z=aR*Math.sin(s.ph);
-  const ci=Math.cos(s.incl),si=Math.sin(s.incl);let y2=y*ci-z*si,z2=y*si+z*ci;y=y2;z=z2;
-  const cn=Math.cos(s.node),sn=Math.sin(s.node);let x2=x*cn+z*sn,z3=-x*sn+z*cn;x=x2;z=z3;out.set(x,y,z);}
-
-let healthyList=[],riskList=[],hpts=null,rpts=null;
-function buildPts(list,size,opacity){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(Math.max(1,list.length)*3),3));g.setAttribute('color',new THREE.BufferAttribute(new Float32Array(Math.max(1,list.length)*3),3));const m=new THREE.PointsMaterial({size,vertexColors:true,transparent:true,opacity,depthWrite:false,sizeAttenuation:true});return new THREE.Points(g,m);}
-function setCols(list,pts){const col=pts.geometry.attributes.color.array;const c=new THREE.Color();for(let i=0;i<list.length;i++){c.set(colorOf(list[i]));col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b;}pts.geometry.attributes.color.needsUpdate=true;}
-function updateColors(){if(hpts)setCols(healthyList,hpts);if(rpts)setCols(riskList,rpts);}
-function rebuild(){const v=visible();const dense=CLUSTER&&v.length>260;healthyList=[];riskList=[];
-  for(const s of v){if(isRisk(s))riskList.push(s);else if(!dense||s.fleet==='Named')healthyList.push(s);}
-  if(hpts){scene.remove(hpts);hpts.geometry.dispose();hpts.material.dispose();}
-  if(rpts){scene.remove(rpts);rpts.geometry.dispose();rpts.material.dispose();}
-  hpts=buildPts(healthyList,2.2,0.6);rpts=buildPts(riskList,4.6,0.95);scene.add(hpts);scene.add(rpts);updateColors();}
-const _v=new THREE.Vector3();
-function writePos(list,pts){const arr=pts.geometry.attributes.position.array;for(let i=0;i<list.length;i++){const s=list[i];s.ph+=s.spd;pos3(s,_v);arr[i*3]=_v.x;arr[i*3+1]=_v.y;arr[i*3+2]=_v.z;(s._p||(s._p=new THREE.Vector3())).copy(_v);}pts.geometry.attributes.position.needsUpdate=true;}
-rebuild();
-
-function animate(){requestAnimationFrame(animate);controls.update();
-  if(hpts)writePos(healthyList,hpts);if(rpts)writePos(riskList,rpts);
-  if(rpts)rpts.material.size=4.2+Math.sin(performance.now()*0.004)*1.1;
-  if(SEL&&SEL._p){selRing.visible=true;selRing.position.copy(SEL._p);selRing.lookAt(camera.position);}else selRing.visible=false;
-  renderer.render(scene,camera);}
-animate();
-addEventListener('resize',()=>{W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
-
-/* picking via projection */
-const tip=document.getElementById('tip');
-function nearest(mx,my){let b=null,bd=1e9;const v=new THREE.Vector3();const all=riskList.concat(healthyList);
-  for(const s of all){if(!s._p)continue;v.copy(s._p).project(camera);if(v.z>1)continue;const sx=(v.x+1)/2*W,sy=(-v.y+1)/2*H;const d=(sx-mx)**2+(sy-my)**2;if(d<bd){bd=d;b=s;}}return bd<420?b:null;}
-renderer.domElement.addEventListener('mousemove',e=>{const s=nearest(e.clientX,e.clientY);if(s){tip.style.display='block';tip.style.left=Math.min(e.clientX+14,W-160)+'px';tip.style.top=(e.clientY+14)+'px';tip.innerHTML=`<div class="id">${s.id}</div><div class="r"><span>alt</span><span>${s.alt} km</span></div><div class="r"><span>decision</span><span style="color:${DCOL[s.r.dec]}">${s.r.dec}</span></div><div class="r"><span>P50 loss</span><span>${fmt(s.r.p50)}</span></div>`;}else tip.style.display='none';});
-renderer.domElement.addEventListener('mouseleave',()=>tip.style.display='none');
-let downXY=null;
-renderer.domElement.addEventListener('mousedown',e=>downXY=[e.clientX,e.clientY]);
-renderer.domElement.addEventListener('mouseup',e=>{if(!downXY)return;const moved=(e.clientX-downXY[0])**2+(e.clientY-downXY[1])**2;downXY=null;if(moved>30)return;const s=nearest(e.clientX,e.clientY);if(s){SEL=s;renderDossier();renderQueue();}});
-
-/* ===== queue / dossier / metrics (DOM) ===== */
-function renderQueue(){const v=visible();let list,label;
-  if(VIEW==='compliance'){label='non-compliant';list=v.filter(s=>!s.r.jur.FCC).sort((a,b)=>(a.r.jur.IADC?1:0)-(b.r.jur.IADC?1:0)||b.r.p50-a.r.p50);}
-  else if(VIEW==='insurance'){label='top exposure';list=v.slice().filter(s=>s.r.p50>0).sort((a,b)=>b.r.p50-a.r.p50);}
-  else if(VIEW==='congestion'){label='highest collision';list=v.slice().sort((a,b)=>b.r.pc-a.r.pc);}
-  else{label='needs action';list=v.filter(isRisk).sort((a,b)=>b.r.urg-a.r.urg);}
-  document.getElementById('qhLabel').textContent=label;document.getElementById('qn').textContent=list.length;
-  const sub=s=>VIEW==='insurance'?('band '+s.r.band):VIEW==='congestion'?('Pc '+s.r.pc.toExponential(1)):VIEW==='compliance'?(s.r.jur.IADC?'fails 5-yr rule':'fails all windows'):(s.r.dec+' · '+(s.r.days<0?'overdue':s.r.days+'d'));
-  const tagcol=s=>VIEW==='insurance'?(s.r.band==='HIGH'?'#e85563':s.r.band==='MEDIUM'?'#e0a23a':'#36c08a'):VIEW==='compliance'?(s.r.jur.IADC?'#e0a23a':'#e85563'):colorOf(s);
-  document.getElementById('queue').innerHTML=list.slice(0,40).map(s=>`<div class="qrow ${s===SEL?'sel':''}" data-id="${s.id}"><div class="t" style="background:${tagcol(s)}"></div><div class="m"><div class="id">${s.id}</div><div class="s">${sub(s)}</div></div><div class="mo">${fmt(s.r.p50)}</div></div>`).join('')||'<div style="padding:12px;color:var(--dim);font-size:11px">Nothing to show in this view.</div>';
-  document.querySelectorAll('.qrow').forEach(r=>r.onclick=()=>{SEL=ALL.find(s=>s.id===r.dataset.id);renderDossier();renderQueue();});}
-function closeDossier(){SEL=null;document.getElementById('dossier').classList.remove('show');}
-document.getElementById('closeD').onclick=()=>{closeDossier();renderQueue();};
-function gauge(p,col){const c=document.getElementById('gz');if(!c)return;const g=c.getContext('2d');c.width=132;c.height=132;g.clearRect(0,0,132,132);g.lineWidth=10;g.strokeStyle='rgba(255,255,255,.08)';g.beginPath();g.arc(66,66,52,0,6.2832);g.stroke();g.strokeStyle=col;g.lineCap='round';g.beginPath();g.arc(66,66,52,-1.5708,-1.5708+p*6.2832);g.stroke();}
-function renderDossier(){const D=document.getElementById('dossier'),b=document.getElementById('dbody');if(!SEL){D.classList.remove('show');return;}
-  const s=SEL,r=s.r,col=DCOL[r.dec],lm=r.p90||1;const jb=(j,ok)=>`<div class="jb" style="color:${ok?'var(--green)':'var(--red)'};border-color:${ok?'rgba(54,192,138,.4)':'rgba(232,85,99,.4)'}">${j} ${ok?'✓':'✗'}</div>`;
-  b.innerHTML=`<div class="kick">${s.fleet} · ${s.strat.replace('_',' ')}</div><div class="nm">${s.id}</div>
-    <div class="dp" style="background:${col}22;color:${col};border:1px solid ${col}55">${r.dec}</div>
-    <div class="gauge"><canvas id="gz"></canvas><div><div class="gv">${(r.p*100).toFixed(0)}%</div><div class="gl">disposal success<br>confidence ${(r.conf*100).toFixed(0)}%</div></div></div>
-    <div class="kv"><span>Altitude</span><b>${s.alt} km</b></div><div class="kv"><span>Natural decay</span><b>${r.dy>=1e3?'>1000':r.dy} yr</b></div>
-    <div class="kv"><span>EoL readiness</span><b>${r.tier}</b></div><div class="kv"><span>Collision Pc</span><b>${r.pc.toExponential(1)}</b></div>
-    <div class="kv"><span>Disposal window</span><b>${s.strat!=='BURN'?(r.dy<=5?'within 5-yr rule':('clears in ~'+(r.dy>=1e3?'>1000':r.dy)+' yr')):(r.days<0?'OVERDUE':r.days+' d')}</b></div><div class="kv"><span>Risk score</span><b>${r.score}/12</b></div>
-    <div class="sec">Compliance</div><div class="jur">${jb('FCC',r.jur.FCC)}${jb('IADC',r.jur.IADC)}${jb('ESA',r.jur.ESA)}</div>
-    <div class="sec">Expected loss (Monte Carlo)</div><div class="loss">${[['P10',r.p10],['P50',r.p50],['P90',r.p90]].map(([l,v])=>`<div class="c"><em>${fmt(v)}</em><div class="b" style="height:${Math.max(5,v/lm*38)}px"></div><small>${l}</small></div>`).join('')}</div>
-    <div class="aud">decision_id ${s.id}_${Math.floor(Date.now()/1000)} · calib navis-calib-2.0.0 · ledger ✓ · decision-support only</div>`;
-  D.classList.add('show');gauge(r.p,col);}
-function renderMetrics(){const v=visible();let p50=0,p90=0,need=0;v.forEach(s=>{p50+=s.r.p50;p90+=s.r.p90;if(isRisk(s))need++;});document.getElementById('money').textContent=fmt(p90);
-  document.getElementById('metrics').innerHTML=[['satellites',v.length],['need action',need],['portfolio P50',fmt(p50)]].map(([l,x])=>`<div class="m"><div class="l">${l}</div><div class="v">${x}</div></div>`).join('');}
-function refresh(){renderQueue();renderMetrics();if(SEL)renderDossier();}
-refresh();
-setInterval(()=>document.getElementById('clock').textContent=new Date().toUTCString().slice(17,25)+' UTC',1000);
 </script>
 </body>
 </html>
